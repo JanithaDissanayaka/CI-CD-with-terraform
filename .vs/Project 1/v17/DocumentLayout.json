@@ -1,0 +1,859 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\listings\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\listings\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\listings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\listings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\listings\\mybids.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\listings\\mybids.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\listings\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\listings\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\controllers\\listingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\controllers\\listingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\hubs\\bidhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\hubs\\bidhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\models\\listing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\models\\listing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\listings\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\listings\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\account\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\account\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\account\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\account\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\models\\changepasswordmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\models\\changepasswordmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\listings\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\listings\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\models\\listingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\models\\listingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\wwwroot\\css\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\wwwroot\\css\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\listings\\confirm.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\listings\\confirm.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\home\\aboutus.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\home\\aboutus.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\home\\aboutus.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\home\\aboutus.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\areas\\identity\\pages\\account\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\areas\\identity\\pages\\account\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\areas\\identity\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\areas\\identity\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\areas\\identity\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\areas\\identity\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\areas\\identity\\pages\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\areas\\identity\\pages\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\data\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\data\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\data\\migrations\\20241020192925_initial mgr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\data\\migrations\\20241020192925_initial mgr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\project 1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\project 1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\data\\services\\bidsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\data\\services\\bidsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\data\\migrations\\00000000000000_createidentityschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\data\\migrations\\00000000000000_createidentityschema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\data\\services\\ibidsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\data\\services\\ibidsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\paginatedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\paginatedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\server.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\server.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|c:\\users\\janitha\\documents\\new folder\\v2\\project 1\\project 1\\models\\bid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67583519-30DF-4E20-AA88-B2916319E4A2}|Project 1\\Project 1.csproj|solutionrelative:project 1\\models\\bid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Listing.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Models\\Listing.cs",
+              "RelativeDocumentMoniker": "Project 1\\Models\\Listing.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Models\\Listing.cs",
+              "RelativeToolTip": "Project 1\\Models\\Listing.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T12:07:58.614Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ListingsController.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Controllers\\ListingsController.cs",
+              "RelativeDocumentMoniker": "Project 1\\Controllers\\ListingsController.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Controllers\\ListingsController.cs",
+              "RelativeToolTip": "Project 1\\Controllers\\ListingsController.cs",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAAAO8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-21T06:49:26.163Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Project 1\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Project 1\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:23:13.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Listings\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\Delete.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Listings\\Delete.cshtml",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAADAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-01T22:53:16.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BidHub.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Hubs\\BidHub.cs",
+              "RelativeDocumentMoniker": "Project 1\\Hubs\\BidHub.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Hubs\\BidHub.cs",
+              "RelativeToolTip": "Project 1\\Hubs\\BidHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T04:11:09.577Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAGEAAAAAAAAAAADwv3wAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-30T05:52:34.561Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MyBids.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\MyBids.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Listings\\MyBids.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\MyBids.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Listings\\MyBids.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-30T06:39:08.714Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\Index.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Listings\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\Index.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Listings\\Index.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACEAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-30T08:00:30.099Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Listings\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\Edit.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Listings\\Edit.cshtml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-30T10:23:33.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\Details.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Listings\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\Details.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Listings\\Details.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAF4AAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-30T07:31:38.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "Project 1\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AgIAABwAAAAAAAAAAADwvzcAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-02T09:37:41.666Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Manage.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Account\\Manage.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Account\\Manage.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Account\\Manage.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Account\\Manage.cshtml",
+              "ViewState": "AgIAAAEAAAAAAAAAAADwvxQAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-04T11:24:12.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ChangePassword.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Account\\ChangePassword.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Account\\ChangePassword.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Account\\ChangePassword.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Account\\ChangePassword.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-04T12:05:16.355Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ChangePasswordModel.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Models\\ChangePasswordModel.cs",
+              "RelativeDocumentMoniker": "Project 1\\Models\\ChangePasswordModel.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Models\\ChangePasswordModel.cs",
+              "RelativeToolTip": "Project 1\\Models\\ChangePasswordModel.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAA4wAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:31:17.899Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Users.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Models\\Users.cs",
+              "RelativeDocumentMoniker": "Project 1\\Models\\Users.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Models\\Users.cs",
+              "RelativeToolTip": "Project 1\\Models\\Users.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:30:33.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "home.css",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\wwwroot\\css\\home.css",
+              "RelativeDocumentMoniker": "Project 1\\wwwroot\\css\\home.css",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\wwwroot\\css\\home.css",
+              "RelativeToolTip": "Project 1\\wwwroot\\css\\home.css",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAuwHwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-02T08:40:37.319Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PaymentsController.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Controllers\\PaymentsController.cs",
+              "RelativeDocumentMoniker": "Project 1\\Controllers\\PaymentsController.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Controllers\\PaymentsController.cs",
+              "RelativeToolTip": "Project 1\\Controllers\\PaymentsController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAuwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:53:27.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Project 1\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Project 1\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAqwCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T08:52:48.229Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Program.cs",
+              "RelativeDocumentMoniker": "Project 1\\Program.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Program.cs",
+              "RelativeToolTip": "Project 1\\Program.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAqwG8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T08:54:58.016Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\Create.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Listings\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\Create.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Listings\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-02T03:33:52.025Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ListingVM.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Models\\ListingVM.cs",
+              "RelativeDocumentMoniker": "Project 1\\Models\\ListingVM.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Models\\ListingVM.cs",
+              "RelativeToolTip": "Project 1\\Models\\ListingVM.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T10:15:05.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Confirm.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\Confirm.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Listings\\Confirm.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Listings\\Confirm.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Listings\\Confirm.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-30T12:54:52.939Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-02T09:24:31.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-02T08:51:42.426Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Aboutus.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Home\\Aboutus.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Home\\Aboutus.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Home\\Aboutus.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Home\\Aboutus.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-02T10:02:53.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+              "RelativeToolTip": "Project 1\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-02T09:36:56.96Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeToolTip": "Project 1\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ViewState": "AgIAACUAAAAAAAAAAAAIwD8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-02T09:36:59.817Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Aboutus.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Home\\Aboutus.cshtml.cs",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Home\\Aboutus.cshtml.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Home\\Aboutus.cshtml.cs",
+              "RelativeToolTip": "Project 1\\Views\\Home\\Aboutus.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T10:02:55.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ApplicationDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Project 1\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeToolTip": "Project 1\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAGYBAAAAAAAAAAAQwKYBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T13:20:04.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "Project 1\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-02T09:35:13.987Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "RelativeToolTip": "Project 1\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-02T09:35:15.308Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "RelativeToolTip": "Project 1\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-02T08:56:49.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "Project 1\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "Project 1\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-02T09:03:15.272Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "20241020192925_Initial mgr.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Data\\Migrations\\20241020192925_Initial mgr.cs",
+              "RelativeDocumentMoniker": "Project 1\\Data\\Migrations\\20241020192925_Initial mgr.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Data\\Migrations\\20241020192925_Initial mgr.cs",
+              "RelativeToolTip": "Project 1\\Data\\Migrations\\20241020192925_Initial mgr.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T09:36:28.484Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Project 1.csproj",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Project 1.csproj",
+              "RelativeDocumentMoniker": "Project 1\\Project 1.csproj",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Project 1.csproj",
+              "RelativeToolTip": "Project 1\\Project 1.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-02T09:28:44.197Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ScaffoldingReadMe.txt",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\ScaffoldingReadMe.txt",
+              "RelativeDocumentMoniker": "Project 1\\ScaffoldingReadMe.txt",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\ScaffoldingReadMe.txt",
+              "RelativeToolTip": "Project 1\\ScaffoldingReadMe.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-10-02T09:34:49.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "00000000000000_CreateIdentitySchema.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Data\\Migrations\\00000000000000_CreateIdentitySchema.cs",
+              "RelativeDocumentMoniker": "Project 1\\Data\\Migrations\\00000000000000_CreateIdentitySchema.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Data\\Migrations\\00000000000000_CreateIdentitySchema.cs",
+              "RelativeToolTip": "Project 1\\Data\\Migrations\\00000000000000_CreateIdentitySchema.cs",
+              "ViewState": "AgIAAMkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T09:23:27.85Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "BidsService.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Data\\Services\\BidsService.cs",
+              "RelativeDocumentMoniker": "Project 1\\Data\\Services\\BidsService.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Data\\Services\\BidsService.cs",
+              "RelativeToolTip": "Project 1\\Data\\Services\\BidsService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAuwBUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T06:44:38.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-30T10:23:50.164Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-30T09:20:29.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "IBidsService.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Data\\Services\\IBidsService.cs",
+              "RelativeDocumentMoniker": "Project 1\\Data\\Services\\IBidsService.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Data\\Services\\IBidsService.cs",
+              "RelativeToolTip": "Project 1\\Data\\Services\\IBidsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T06:43:39.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAACkAAAAAAAAAAAAIwDcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-30T09:24:05.596Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "PaginatedList.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\PaginatedList.cs",
+              "RelativeDocumentMoniker": "Project 1\\PaginatedList.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\PaginatedList.cs",
+              "RelativeToolTip": "Project 1\\PaginatedList.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-01T22:53:57.832Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-30T10:23:54.888Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Project 1\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Project 1\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-30T10:23:53.552Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "Project 1\\wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "Project 1\\wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-10-02T09:03:07.49Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\wwwroot\\favicon.ico",
+              "RelativeDocumentMoniker": "Project 1\\wwwroot\\favicon.ico",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\wwwroot\\favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "RelativeToolTip": "Project 1\\wwwroot\\favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2025-10-02T08:51:18.606Z",
+              "EditorCaption": " - Icon [32x32, 32 bit, BMP]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\appsettings.json",
+              "RelativeDocumentMoniker": "Project 1\\appsettings.json",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\appsettings.json",
+              "RelativeToolTip": "Project 1\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-30T06:11:47.176Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": ".env",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\.env",
+              "RelativeDocumentMoniker": "Project 1\\.env",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\.env",
+              "RelativeToolTip": "Project 1\\.env",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-30T18:26:24.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "Server.js",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Server.js",
+              "RelativeDocumentMoniker": "Project 1\\Server.js",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Server.js",
+              "RelativeToolTip": "Project 1\\Server.js",
+              "ViewState": "AgIAADwAAAAAAAAAAAAowEYAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-30T18:19:33.129Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Project 1\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\appsettings.Development.json",
+              "RelativeToolTip": "Project 1\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-30T08:23:13.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "Bid.cs",
+              "DocumentMoniker": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Models\\Bid.cs",
+              "RelativeDocumentMoniker": "Project 1\\Models\\Bid.cs",
+              "ToolTip": "C:\\Users\\Janitha\\Documents\\New folder\\v2\\Project 1\\Project 1\\Models\\Bid.cs",
+              "RelativeToolTip": "Project 1\\Models\\Bid.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T06:04:45.54Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+﻿@model PaginatedList<Project_1.Models.Listing>
+
+@{
+    ViewData["Title"] = "My Bids";
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4" style="color: #4b2c20;">Open Bids</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            Their is no any bids yet.
+        </div>
+    }
+    else
+    {
+        @foreach (var listing in Model)
+        {
+            <div class="card shadow-sm mb-4" style="background-color: #fdfbf7; border-radius: 10px;">
+                <div class="row g-0">
+                    <div class="col-md-5">
+                        <img src="~/Images/@listing.ImagePath" class="img-fluid rounded-start" style="max-height: 300px; object-fit: cover;" />
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a asp-action="Details" asp-route-id="@listing.Id" style="color: #4b2c20; text-decoration: none;">
+                                    @listing.Title
+                                </a>
+                            </h5>
+                            <p class="card-text">@listing.Description</p>
+                            <p class="card-text"><strong>Current Bid:</strong> Rs @listing.Price.ToString("N2")</p>
+                            <p class="card-text"><small class="text-muted">Listed by: @listing.User.Email</small></p>
+                            <a asp-action="Details" asp-route-id="@listing.Id" class="btn btn-gold">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-center mt-4">
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+        <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-secondary me-2 @prevDisabled">Previous</a>
+        <span class="btn btn-light" style="cursor: default;">Page @Model.PageIndex of @Model.TotalPages</span>
+        <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-secondary ms-2 @nextDisabled">Next</a>
+    </div>
+</div>

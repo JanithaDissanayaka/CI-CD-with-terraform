@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Antique Auctions</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Navbar hover effect */
+        .navbar-nav .nav-link:hover {
+            color: #ffc107 !important;
+        }
+
+        /* Search input */
+        .form-control-sm {
+            min-width: 180px;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #fdfbf7;
+        }
+
+            footer a {
+                color: #4b2c20;
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4b2c20;">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa-solid fa-gavel me-2"></i> Antique Auctions
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Left Links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link @((ViewData["ActivePage"] as string) == "Home" ? "active" : "")"
+                               asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @((ViewData["ActivePage"] as string) == "Auctions" ? "active" : "")"
+                               asp-area="" asp-controller="Listings" asp-action="Index">Auctions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @((ViewData["ActivePage"] as string) == "About" ? "active" : "")"
+                               asp-area="" asp-controller="Home" asp-action="Aboutus">About Us</a>
+                        </li>
+                    </ul>
+
+                    <!-- Search Bar -->
+                    <form class="d-flex me-3" asp-controller="Listings" asp-action="Index" method="get">
+                        <input class="form-control form-control-sm me-1" type="search" placeholder="Search antiques..." name="searchString" />
+                        <button class="btn btn-warning btn-sm" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+
+                    <!-- User Account -->
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-user me-1"></i> My Account
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" asp-controller="Listings" asp-action="Create">Create Auction</a></li>
+                                <li><a class="dropdown-item" asp-controller="Listings" asp-action="MyListings">My Listings</a></li>
+                                <li><a class="dropdown-item" asp-controller="Listings" asp-action="MyBids">My Bids</a></li>
+                                <li><a class="dropdown-item" href="/Account/Manage">Account Settings</a></li>
+                                <li><a class="dropdown-item" href="/Account/ChangePassword">Change Password</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><partial name="_LoginPartial" /></li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex">
+                            <partial name="_LoginPartial" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-4 pb-3">
+        @RenderBody()
+    </main>
+
+    <footer class="border-top text-muted py-3">
+        <div class="container d-flex justify-content-between">
+            <span>&copy; @DateTime.Now.Year Antique Auctions</span>
+            <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

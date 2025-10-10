@@ -1,0 +1,212 @@
+﻿@model Project_1.Models.Listing
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> userManager
+
+@{
+    ViewData["Title"] = "Listing Details";
+    Layout = "_Layout";
+
+    // Find the highest bid, including navigation properties if available
+    var highestBid = Model.Bids?.OrderByDescending(b => b.Price).FirstOrDefault();
+
+    // Use the Listing's Price as the default/starting bid if no bids exist
+    var currentPrice = highestBid?.Price ?? Model.Price;
+
+    // Get the listing ID for use in SignalR and JavaScript
+    var listingId = Model.Id;
+
+    // Determine if the current user is the listing owner
+    var isListingOwner = userManager.GetUserId(User) == Model.IdentityUserId;
+
+    // Format the current price to pass as a string for min bid calculation
+    var currentPriceFormatted = currentPrice.ToString("F2");
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm p-4" style="background-color: #fdfbf7; border-radius: 10px;">
+        <h1 class="display-4 text-center mb-3" style="color: #4b2c20;">@Model.Title</h1>
+
+        @if (User.Identity.IsAuthenticated && Model.IsSold && highestBid != null)
+        {
+            <div class="alert alert-success text-center">
+                @if (highestBid.IdentityUserId == userManager.GetUserId(User))
+                {
+                    <p><strong>Congratulations!</strong> You are the winner with a bid of Rs @highestBid.Price.ToString("N2")!</p>
+                }
+                else if (isListingOwner)
+                {
+                    <p><strong>@highestBid.User.UserName</strong> won with a bid of Rs @highestBid.Price.ToString("N2")!</p>
+                }
+                else
+                {
+                    <p><strong>Bidding is closed!</strong></p>
+                }
+            </div>
+        }
+        else if (Model.IsSold && highestBid == null)
+        {
+            <div class="alert alert-info text-center">
+                <p><strong>Bidding is closed!</strong> No bids were placed on this item.</p>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-md-5">
+                <img src="~/Images/@Model.ImagePath" alt="@Model.Title" class="img-fluid rounded" style="max-height: 60vh;" />
+            </div>
+
+            <div class="col-md-7">
+                <p class="mb-3" style="color:#4b2c20;">@Model.Description</p>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <p>
+                        Highest Bid: <strong style="color:#b8860b;">
+                            Rs
+                            @* 🎯 TARGET: ID for SignalR real-time update *@
+                            <span id="highestBidAmount">@currentPrice.ToString("N2")</span>
+                        </strong>
+                    </p>
+
+                    @if (isListingOwner)
+                    {
+                        @* --- Owner View: Bidding History & Close Bidding --- *@
+                        <h6>Bidding History:</h6>
+                        <ul>
+                            @if (Model.Bids != null && Model.Bids.Any())
+                            {
+                                @foreach (var bid in Model.Bids.OrderByDescending(b => b.Price))
+                                {
+                                    <li>@bid.User.UserName bidded Rs @bid.Price.ToString("N2")</li>
+                                }
+                            }
+                            else
+                            {
+                                <li>No bids placed yet.</li>
+                            }
+                        </ul>
+
+                        @if (!Model.IsSold)
+                        {
+                            <form asp-action="CloseBidding" asp-route-id="@Model.Id" method="post" class="mt-2">
+                                @* ✅ FIX: Add Anti-Forgery Token. This is crucial for form submission to the [HttpPost] action. *@
+                                @Html.AntiForgeryToken()
+
+                                <button type="submit" class="btn btn-danger">
+                                    Close Bidding
+                                </button>
+                            </form>
+                        }
+                    }
+                    else if (!Model.IsSold)
+                    {
+                        @* --- Bidder View: Place Bid Form (Replaces Buy Now) --- *@
+                        <form asp-controller="Listings" asp-action="AddBid" method="post" class="mt-4" id="bidForm">
+                            <div class="input-group mb-3">
+                                <input type="number"
+                                       name="Price"
+                                       id="bidInputPrice"
+                                       class="form-control"
+                                       placeholder="Enter your bid ($@(currentPrice + 0.01).00 minimum)"
+                                       min="@(currentPrice + 0.01)"
+                                       step="0.01"
+                                       required />
+                                <button type="submit" class="btn btn-warning" id="placeBidButton">Place Bid</button>
+                            </div>
+                            <input type="hidden" name="ListingId" value="@Model.Id" />
+                            <input type="hidden" name="IdentityUserId" value="@userManager.GetUserId(User)" />
+                        </form>
+                        @* ---------------------------------------------------- *@
+                    }
+                }
+                else
+                {
+                    <p class="text-muted">Sign in to place a bid.</p>
+                }
+
+                <p>Listed by: <strong>@Model.User.UserName</strong></p>
+
+                @* NOTE: The PayPal div and scripts are removed as they are replaced by the "Place Bid" form. *@
+            </div>
+        </div>
+
+        <hr class="my-4" />
+        <h5>Comments</h5>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <form asp-action="AddComment" method="post" class="mb-3">
+                <textarea name="Content" class="form-control mb-2" rows="3" placeholder="Add a comment..."></textarea>
+                <input type="hidden" name="IdentityUserId" value="@userManager.GetUserId(User)" />
+                <input type="hidden" name="ListingId" value="@Model.Id" />
+                <button type="submit" class="btn btn-gold">Submit Comment</button>
+            </form>
+        }
+        else
+        {
+            <textarea class="form-control mb-2" rows="3" placeholder="Sign in to comment..." disabled></textarea>
+            <button class="btn btn-secondary" disabled>Submit Comment</button>
+        }
+
+        <div class="mt-3">
+            @{
+                int commentNumber = 1;
+            }
+            @foreach (var comment in Model.Comments)
+            {
+                <div class="border p-2 mb-2 rounded" style="background-color:#fff8e7; color:#4b2c20;">
+                    <strong>@commentNumber. @comment.User.UserName:</strong> @comment.Content
+                </div>
+                commentNumber++;
+            }
+        </div>
+    </div>
+</div>
+
+
+@* --------------------------------------------------------------------------------------------------- *@
+@* 🚀 SignalR Implementation for Real-time Bid Updates *@
+@* --------------------------------------------------------------------------------------------------- *@
+@* 1. Reference the SignalR client script *@
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+
+<script>
+    const currentListingId = @listingId;
+    const bidInput = document.getElementById("bidInputPrice");
+    const highestBidElement = document.getElementById("highestBidAmount");
+
+
+    // 2. Build and start the connection to the Hub
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/bidHub") // Must match the endpoint in Program.cs
+        .build();
+
+    // 3. Define the client method the server calls
+    connection.on("ReceiveNewHighestBid", function (newHighestBidAmount) {
+        console.log("Received new highest bid: Rs" + newHighestBidAmount);
+
+        if (highestBidElement) {
+            // Update the display text
+            highestBidElement.innerText = newHighestBidAmount;
+        }
+
+        if (bidInput) {
+            // Update the minimum value on the bid form input
+            // Assuming the amount passed from the server is a formatted string like "100.00"
+            const newMinBid = (parseFloat(newHighestBidAmount) + 0.01).toFixed(2);
+            bidInput.min = newMinBid;
+            bidInput.placeholder = `Enter your bid ($${newMinBid} minimum)`;
+        }
+    });
+
+    // 4. Start the connection and join the listing-specific group
+    connection.start().then(function () {
+        console.log("SignalR Connection Started. Joining group: " + currentListingId);
+
+        connection.invoke("JoinListingGroup", currentListingId)
+            .catch(err => console.error("Error joining group: " + err.toString()));
+
+    }).catch(function (err) {
+        return console.error("Error starting SignalR connection: " + err.toString());
+    });
+</script>

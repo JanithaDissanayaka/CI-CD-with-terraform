@@ -1,0 +1,48 @@
+﻿@model Project_1.Models.Listing
+
+@{
+    ViewData["Title"] = "Delete Listing";
+    Layout = "_Layout"; // Use the shared layout
+}
+
+<div class="container mt-5">
+    <section class="card shadow-sm p-5" style="background-color: #fdfbf7; border-radius: 10px;">
+        <h1 class="display-4 text-center mb-4" style="color: #4b2c20;">Delete Listing</h1>
+        <p class="text-center text-muted mb-4">Are you sure you want to delete this item?</p>
+
+        <div class="listing-details mb-4">
+            <dl class="row">
+                <dt class="col-sm-3">Title</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Title)</dd>
+
+                <dt class="col-sm-3">Description</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
+
+                <dt class="col-sm-3">Starting Bid</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Price)</dd>
+
+                <dt class="col-sm-3">Image</dt>
+                <dd class="col-sm-9">
+                    @if (!string.IsNullOrEmpty(Model.ImagePath))
+                    {
+                        <img src="~/uploads/@Model.ImagePath" alt="@Model.Title" style="max-width:200px; border-radius:5px;" />
+                    }
+                </dd>
+
+                <dt class="col-sm-3">Sold</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.IsSold)</dd>
+
+                <dt class="col-sm-3">Owner</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.User.Id)</dd>
+            </dl>
+        </div>
+
+        <div class="text-center">
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger btn-lg me-2">Delete</button>
+                <a asp-action="Index" class="btn btn-secondary btn-lg">Back to Listings</a>
+            </form>
+        </div>
+    </section>
+</div>
