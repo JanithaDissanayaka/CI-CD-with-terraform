@@ -1467,3 +1467,4 @@ C:\Users\Janitha\Documents\New folder\v2\Project 1\Project 1\obj\Debug\net8.0\re
 C:\Users\Janitha\Documents\New folder\v2\Project 1\Project 1\obj\Debug\net8.0\Project 1.pdb
 C:\Users\Janitha\Documents\New folder\v2\Project 1\Project 1\obj\Debug\net8.0\Project 1.genruntimeconfig.cache
 C:\Users\Janitha\Documents\New folder\v2\Project 1\Project 1\obj\Debug\net8.0\ref\Project 1.dll
+C:\Users\Janitha\Documents\New folder\v2\Project 1\Project 1\obj\Debug\net8.0\Project 1.sourcelink.json

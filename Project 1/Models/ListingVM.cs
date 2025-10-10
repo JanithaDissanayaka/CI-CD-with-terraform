@@ -18,6 +18,10 @@ namespace Project_1.Models
         [ForeignKey("IdentityUserId")]
         public IdentityUser? User { get; set; }
 
+        // 🕒 New fields for auction duration
+        public int ClosingHours { get; set; }
+        public int ClosingMinutes { get; set; }
+
 
     }
 }

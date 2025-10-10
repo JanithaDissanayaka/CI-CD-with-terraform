@@ -4,7 +4,7 @@
 
 @{
     ViewData["Title"] = "Create Listing";
-    Layout = "_Layout"; // Ensure consistent layout
+    Layout = "_Layout";
 }
 
 <div class="container mt-5">
@@ -39,7 +39,23 @@
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
 
-            <!-- Corrected hidden input -->
+            <!-- 🔥 Add auction closing time duration -->
+            <div class="mb-3">
+                <label class="form-label">Auction Duration</label>
+                <div class="d-flex gap-3">
+                    <div>
+                        <input type="number" asp-for="ClosingHours" min="0" max="72" class="form-control" placeholder="Hours" />
+                        <small class="text-muted">Hours</small>
+                    </div>
+                    <div>
+                        <input type="number" asp-for="ClosingMinutes" min="0" max="59" class="form-control" placeholder="Minutes" />
+                        <small class="text-muted">Minutes</small>
+                    </div>
+                </div>
+                <span asp-validation-for="ClosingHours" class="text-danger"></span>
+                <span asp-validation-for="ClosingMinutes" class="text-danger"></span>
+            </div>
+
             <input type="hidden" asp-for="IdentityUserId" value="@userManager.GetUserId(User)" />
 
             <div class="text-center">

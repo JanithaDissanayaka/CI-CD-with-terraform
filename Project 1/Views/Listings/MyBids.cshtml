@@ -47,8 +47,9 @@
             var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
             var nextDisabled = !Model.HasNextPage ? "disabled" : "";
         }
-        <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-secondary me-2 @prevDisabled">Previous</a>
+        <a asp-action="MyBids" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-secondary me-2 @prevDisabled">Previous</a>
         <span class="btn btn-light" style="cursor: default;">Page @Model.PageIndex of @Model.TotalPages</span>
-        <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-secondary ms-2 @nextDisabled">Next</a>
+        <a asp-action="MyBids" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-secondary ms-2 @nextDisabled">Next</a>
+
     </div>
 </div>

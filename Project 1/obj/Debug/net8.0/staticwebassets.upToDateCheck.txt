@@ -6,10 +6,13 @@ wwwroot\Images\3198058_462709-PFRD1V-304.jpg
 wwwroot\Images\bag.png
 wwwroot\Images\Bag1.png
 wwwroot\Images\images.jpg
+wwwroot\Images\maxresdefault.jpg
 wwwroot\Images\scaf.png
+wwwroot\Images\search.png
 wwwroot\Images\settings.png
 wwwroot\Images\shirt.png
 wwwroot\Images\shoe.png
+wwwroot\Images\transparent-hd-white-menu-burger-icon-701751695037039ulxnzxwywi.png
 wwwroot\Images\watch.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
@@ -69,4 +72,3 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\Images\maxresdefault.jpg

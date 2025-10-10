@@ -22,5 +22,7 @@ namespace Project_1.Models
 
         public List<Bid>? Bids { get; set; }
         public List<Comment>? Comments { get; set; }
+
+        public DateTime ClosingTime { get; set; }
     }
 }

@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Project_1.Data.Services;
 using Project_1.Data;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using Project_1.Hubs; // ⬅️ New: Add the namespace for your BidHub
+using Project_1.Hubs;
+using Project_1.Services; // ✅ NEW: for BidExpirationService
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,15 +28,17 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
 // ----------------- SignalR Service -----------------
-builder.Services.AddSignalR(); // ⬅️ New: Add SignalR services to the container
+builder.Services.AddSignalR(); // ✅ Enables SignalR real-time connections
 
 // ----------------- Application Services -----------------
 builder.Services.AddScoped<IListingsService, ListingsService>();
 builder.Services.AddScoped<IBidsService, BidsService>();
-// 🛑 FIX: Changed the second type argument from ICommentsService to the concrete CommentsService class
 builder.Services.AddScoped<ICommentsService, CommentsService>();
 
-// ----------------- Fake Email Sender (no SMTP needed) -----------------
+// ✅ Register the background service for automatic bid expiration
+builder.Services.AddHostedService<BidExpirationService>();
+
+// ----------------- Fake Email Sender (for testing) -----------------
 builder.Services.AddSingleton<IEmailSender, NoEmailSender>();
 
 // ----------------- MVC / Razor -----------------
@@ -61,12 +64,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// ----------------- SignalR Hub Mapping -----------------
-app.MapHub<BidHub>("/bidHub"); // ⬅️ New: Map the Hub before controllers/pages
-
 app.UseAuthentication();
 app.UseAuthorization();
 
+// ----------------- SignalR Hub Mapping -----------------
+app.MapHub<BidHub>("/bidHub"); // ✅ SignalR endpoint for real-time bidding
 
 // ----------------- Routes -----------------
 app.MapControllerRoute(
@@ -83,15 +85,12 @@ public class NoEmailSender : IEmailSender
 {
     public Task SendEmailAsync(string email, string subject, string htmlMessage)
     {
-        // 🚫 Do nothing (skip sending emails in development)
+        // 🚫 Skips sending real emails (used for local testing)
         return Task.CompletedTask;
     }
 }
 
-// ----------------- Hub Class Stub -----------------
-// NOTE: You should move this to a separate file (e.g., Hubs/BidHub.cs)
-// but defining it here temporarily ensures the code compiles for testing.
-// You must define the actual BidHub logic in your project.
+// ----------------- Hub Class -----------------
 namespace Project_1.Hubs
 {
     using Microsoft.AspNetCore.SignalR;
@@ -99,14 +98,24 @@ namespace Project_1.Hubs
 
     public class BidHub : Hub
     {
+        // 🔹 Called when a new highest bid is placed
         public async Task UpdateHighestBid(int listingId, string newHighestBidAmount)
         {
-            await Clients.Group($"listing-{listingId}").SendAsync("ReceiveNewHighestBid", newHighestBidAmount);
+            await Clients.Group($"listing-{listingId}")
+                .SendAsync("ReceiveNewHighestBid", newHighestBidAmount);
         }
 
+        // 🔹 Called when a user views a specific listing
         public async Task JoinListingGroup(int listingId)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, $"listing-{listingId}");
+        }
+
+        // 🔹 (Optional) Notify when auction ends
+        public async Task NotifyAuctionEnded(int listingId, string winner, decimal finalPrice)
+        {
+            await Clients.Group($"listing-{listingId}")
+                .SendAsync("AuctionEnded", new { listingId, winner, finalPrice });
         }
     }
 }
