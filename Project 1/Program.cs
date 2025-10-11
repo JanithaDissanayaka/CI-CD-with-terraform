@@ -5,6 +5,7 @@ using Project_1.Data;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Project_1.Hubs;
 using Project_1.Services;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,10 +26,10 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     options.Password.RequireLowercase = true;
     options.Password.RequiredLength = 8;
 })
-.AddRoles<IdentityRole>() // Add Roles
+.AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// ----------------- SignalR Service -----------------
+// ----------------- SignalR -----------------
 builder.Services.AddSignalR();
 
 // ----------------- Application Services -----------------
@@ -48,21 +49,24 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
 });
 
+// ----------------- Stripe -----------------
+var stripeSettings = builder.Configuration.GetSection("Stripe");
+StripeConfiguration.ApiKey = stripeSettings["SecretKey"];
+
+
+
+// ----------------- Build App -----------------
 var app = builder.Build();
 
-// ----------------- Seed Admin Role & User -----------------
+// ----------------- Seed Admin -----------------
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-    // Create Admin role if it doesn't exist
     if (!await roleManager.RoleExistsAsync("Admin"))
-    {
         await roleManager.CreateAsync(new IdentityRole("Admin"));
-    }
 
-    // Create Admin user if it doesn't exist
     var adminEmail = "admin@example.com";
     var adminUser = await userManager.FindByEmailAsync(adminEmail);
     if (adminUser == null)
@@ -73,7 +77,7 @@ using (var scope = app.Services.CreateScope())
             Email = adminEmail,
             EmailConfirmed = true
         };
-        await userManager.CreateAsync(adminUser, "Admin@123"); // Password
+        await userManager.CreateAsync(adminUser, "Admin@123");
         await userManager.AddToRoleAsync(adminUser, "Admin");
     }
 }
@@ -96,7 +100,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// ----------------- SignalR Hub Mapping -----------------
+// ----------------- SignalR Hub -----------------
 app.MapHub<BidHub>("/bidHub");
 
 // ----------------- Routes -----------------
@@ -109,6 +113,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapRazorPages();
+
 app.Run();
 
 // ----------------- Fake Email Sender -----------------
@@ -120,7 +125,7 @@ public class NoEmailSender : IEmailSender
     }
 }
 
-// ----------------- Hub -----------------
+// ----------------- SignalR Hub -----------------
 namespace Project_1.Hubs
 {
     using Microsoft.AspNetCore.SignalR;

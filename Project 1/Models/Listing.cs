@@ -25,6 +25,8 @@ namespace Project_1.Models
 
         public DateTime ClosingTime { get; set; }
 
+        public decimal CurrentBid { get; set; } 
+
 
     }
 }

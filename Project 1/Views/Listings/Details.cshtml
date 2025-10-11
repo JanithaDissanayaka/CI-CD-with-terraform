@@ -18,6 +18,7 @@
     <div class="card shadow-sm p-4" style="background-color: #fdfbf7; border-radius: 10px;">
         <h1 class="display-4 text-center mb-3" style="color: #4b2c20;">@Model.Title</h1>
 
+        @* ---------- Auction Status Messages ---------- *@
         @if (User.Identity.IsAuthenticated && Model.IsSold && highestBid != null)
         {
             <div class="alert alert-success text-center">
@@ -58,6 +59,7 @@
                         </strong>
                     </p>
 
+                    @* ---------- Bidding Controls ---------- *@
                     @if (isListingOwner)
                     {
                         <h6>Bidding History:</h6>
@@ -103,8 +105,7 @@
                                 <button type="submit" class="btn btn-danger">Close Bidding</button>
                             </form>
 
-                            <form asp-action="DeleteListing" asp-route-id="@Model.Id" method="post" class="mt-2"
-                                  >
+                            <form asp-action="DeleteListing" asp-route-id="@Model.Id" method="post" class="mt-2">
                                 @Html.AntiForgeryToken()
                                 <button type="submit" class="btn btn-warning">Delete Listing</button>
                             </form>
@@ -118,7 +119,7 @@
                                        name="Price"
                                        id="bidInputPrice"
                                        class="form-control"
-                                       placeholder="Enter your bid ($@(currentPrice + 0.01).00 minimum)"
+                                       placeholder="Enter your bid (Rs @(currentPrice + 0.01) minimum)"
                                        min="@(currentPrice + 0.01)"
                                        step="0.01"
                                        required />
@@ -137,6 +138,34 @@
                 <p>Listed by: <strong>@Model.User.UserName</strong></p>
             </div>
         </div>
+
+        @* ---------- Payment Section ---------- *@
+        <hr class="my-4" />
+
+        @if (User.Identity.IsAuthenticated && Model.IsSold && highestBid != null)
+        {
+            if (highestBid.IdentityUserId == userManager.GetUserId(User))
+            {
+                <div class="text-center mt-3">
+                    <p class="text-success fw-bold">🎉 Congratulations! You won this auction.</p>
+
+                    <form asp-controller="Payment" asp-action="CreateCheckoutSession" method="post">
+                        <input type="hidden" name="amount" value="@highestBid.Price" />
+                        <input type="hidden" name="listingId" value="@Model.Id" />
+                        <button type="submit" class="btn btn-success btn-lg">Pay Now</button>
+                    </form>
+                </div>
+            }
+            else if (isListingOwner)
+            {
+                <div class="text-center mt-3">
+                    <p class="text-primary fw-bold">
+                        The winning bidder <strong>@highestBid.User.UserName</strong> won with Rs @highestBid.Price.ToString("N2").
+                        Waiting for payment...
+                    </p>
+                </div>
+            }
+        }
 
         <hr class="my-4" />
         <h5>Comments</h5>
@@ -189,13 +218,8 @@
         if (bidInput) {
             const newMinBid = (parseFloat(newHighestBidAmount) + 0.01).toFixed(2);
             bidInput.min = newMinBid;
-            bidInput.placeholder = `Enter your bid ($${newMinBid} minimum)`;
+            bidInput.placeholder = `Enter your bid (Rs ${newMinBid} minimum)`;
         }
-    });
-
-    connection.on("BidDeleted", function (bidId) {
-        const bidElement = document.querySelector(`form[asp-route-id='${bidId}']`)?.parentElement;
-        if (bidElement) bidElement.remove();
     });
 
     connection.start().then(function () {
@@ -205,6 +229,7 @@
         return console.error(err.toString());
     });
 </script>
+
 <script>
     document.querySelectorAll("[id^='timer-']").forEach(timer => {
         const closingTime = new Date(timer.dataset.closingTime);
