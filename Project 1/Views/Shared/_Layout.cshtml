@@ -68,6 +68,16 @@
                             <a class="nav-link @((ViewData["ActivePage"] as string) == "About" ? "active" : "")"
                                asp-area="" asp-controller="Home" asp-action="Aboutus">About Us</a>
                         </li>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @((ViewData["ActivePage"] as string) == "AdminDashboard" ? "active" : "")"
+                                   asp-area="" asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
+                            </li>
+                        }
+
+
                     </ul>
 
                     <!-- Search Bar -->

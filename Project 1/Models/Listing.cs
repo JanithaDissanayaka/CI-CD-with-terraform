@@ -25,7 +25,17 @@ namespace Project_1.Models
 
         public DateTime ClosingTime { get; set; }
 
-        public decimal CurrentBid { get; set; } 
+        public decimal CurrentBid { get; set; }
+
+        public string Status
+        {
+            get
+            {
+                if (IsSold) return "Sold";
+                if (DateTime.UtcNow > ClosingTime) return "Closed";
+                return "Active"; // default
+            }
+        }
 
 
     }

@@ -1,22 +1,38 @@
-﻿@model Project_1.Models.AdminDashboardViewModel
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<h1>Admin Dashboard</h1>
+<h2 class="text-center mt-4">Admin Dashboard</h2>
 
-<h2>Listings</h2>
-<table class="table">
-    <tr>
-        <th>Title</th>
-        <th>Highest Bid</th>
-        <th>Actions</th>
-    </tr>
-    @foreach (var listing in Model.Listings)
-    {
-        <tr>
-            <td>@listing.Title</td>
-            <td>@listing.Bids?.OrderByDescending(b => b.Price).FirstOrDefault()?.Price?? 0</td>
-            <td>
-                <a asp-area="Admin" asp-controller="Admin" asp-action="ApproveBid" asp-route-id="@listing.Id" class="btn btn-success">Approve</a>
-            </td>
-        </tr>
-    }
-</table>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3">
+                <h4>Users</h4>
+                <a href="@Url.Action("Users", "Admin")" class="btn btn-primary">Manage Users</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3">
+                <h4>Listings</h4>
+                <a href="@Url.Action("Listings", "Admin")" class="btn btn-success">Manage Listings</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3">
+                <h4>Bids</h4>
+                <a href="@Url.Action("Bids", "Admin")" class="btn btn-warning">Manage Bids</a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3">
+                <h4>Payments</h4>
+                <a href="@Url.Action("Payments", "Admin")" class="btn btn-info">View Payments</a>
+            </div>
+        </div>
+    </div>
+</div>

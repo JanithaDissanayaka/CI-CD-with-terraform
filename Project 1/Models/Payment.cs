@@ -1,5 +1,5 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project_1.Models
 {
@@ -8,10 +8,17 @@ namespace Project_1.Models
         [Key]
         public int PaymentId { get; set; }
 
-        public int ListingId { get; set; }    // Auction listing ID
+        public int ListingId { get; set; }  // FK to Listing
 
-        public decimal Amount { get; set; }   // Amount paid
+        [ForeignKey("ListingId")]
+        public Listing Listing { get; set; }  // ← Add this
 
-        public DateTime PaymentDate { get; set; } = DateTime.Now;
+        [Required]
+        public string UserId { get; set; }   // ID of the user who paid
+
+        [Required]
+        public decimal Amount { get; set; }
+
+        public DateTime PaymentDate { get; set; } = DateTime.UtcNow;
     }
 }

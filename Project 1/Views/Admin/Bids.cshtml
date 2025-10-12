@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Project_1.Models.Bid>
+
+<h2>Manage Bids</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Bid ID</th>
+            <th>Listing</th>
+            <th>User</th>
+            <th>Price</th>
+            <th>Created At</th>
+            <th>Approved</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bid in Model)
+        {
+            <tr>
+                <td>@bid.Id</td>
+                <td>@(bid.Listing != null ? bid.Listing.Title : "N/A")</td>
+                <td>@(bid.User != null ? bid.User.UserName : "N/A")</td>
+                <td>@bid.Price.ToString("C")</td>
+                <td>@bid.CreatedAt.ToLocalTime().ToString("g")</td>
+                <td>@(bid.IsApproved ? "✅ Approved" : "❌ Pending")</td>
+                <td>
+                    @if (!bid.IsApproved)
+                    {
+                        <form asp-action="ApproveBid" asp-controller="Admin" method="post">
+                            <input type="hidden" name="bidId" value="@bid.Id" />
+                            <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
