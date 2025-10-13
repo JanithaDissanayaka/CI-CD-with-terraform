@@ -26,5 +26,10 @@ namespace Project_1.Controllers
 
             return View(featuredListings);
         }
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
     }
 }
