@@ -15,6 +15,7 @@ wwwroot\Images\settings.png
 wwwroot\Images\shirt.png
 wwwroot\Images\shoe.png
 wwwroot\Images\transparent-hd-white-menu-burger-icon-701751695037039ulxnzxwywi.png
+wwwroot\Images\voice.png
 wwwroot\Images\watch.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
