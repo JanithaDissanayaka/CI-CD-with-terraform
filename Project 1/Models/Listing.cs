@@ -27,6 +27,13 @@ namespace Project_1.Models
 
         public decimal CurrentBid { get; set; }
 
+        // --- THIS IS THE CORRECTED LINE ---
+        // Added as nullable 'string?' to prevent migration errors on existing data.
+        public string? Category { get; set; }
+
+        // This 'Status' property is not mapped to the database
+        // and is fine as-is.
+        [NotMapped] // Good practice to add this
         public string Status
         {
             get
@@ -36,7 +43,5 @@ namespace Project_1.Models
                 return "Active"; // default
             }
         }
-
-
     }
 }

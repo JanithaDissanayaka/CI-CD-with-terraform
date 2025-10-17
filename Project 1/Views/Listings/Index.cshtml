@@ -6,95 +6,142 @@
 }
 
 <div class="container mt-5">
-    <h2 class="text-center mb-4" style="color: #4b2c20;">Open Bids</h2>
+    <h2 class="section-title text-center">Open Bids</h2>
 
     @if (!Model.Any())
     {
-        <div class="alert alert-info text-center">
-            There are no bids yet.
+        <div class="alert alert-info text-center mt-4">
+            There are no active bids at the moment.
         </div>
     }
     else
     {
-        @foreach (var listing in Model)
-        {
-            <div class="card shadow-sm mb-4" style="background-color: #fdfbf7; border-radius: 10px;">
-                <div class="row g-0">
-                    <div class="col-md-5">
-                        <img src="~/Images/@listing.ImagePath" class="img-fluid rounded-start" style="max-height: 300px; object-fit: cover;" />
+        <div class="listing-container mt-4">
+            @foreach (var listing in Model)
+            {
+                <div class="listing-card card mb-4">
+                    <div class="listing-card-img-wrapper">
+                        <img src="~/Images/@listing.ImagePath" class="listing-card-img" />
                     </div>
-                    <div class="col-md-7">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <a asp-action="Details" asp-route-id="@listing.Id" style="color: #4b2c20; text-decoration: none;">
-                                    @listing.Title
-                                </a>
-                            </h5>
 
-                            <p class="card-text">@listing.Description</p>
-                            <p class="card-text"><strong>Current Bid:</strong> Rs @listing.Price.ToString("N2")</p>
-                            <p class="card-text"><small class="text-muted">Listed by: @listing.User.Email</small></p>
+                    <div class="listing-card-body card-body">
+                        <h5 class="listing-card-title">
+                            <a asp-action="Details" asp-route-id="@listing.Id" class="listing-card-title-link">
+                                @listing.Title
+                            </a>
+                        </h5>
 
-                            <!-- Countdown Timer -->
-                            <p class="card-text">
-                                <strong>Time Remaining:</strong>
-                                <span id="timer-@listing.Id"
-                                      data-closing-time="@listing.ClosingTime.ToString("o")"
-                                      style="color:@(listing.IsSold ? "red" : "green"); font-weight:bold;">
-                                    @(listing.IsSold ? "Bidding Closed" : "")
-                                </span>
-                            </p>
+                        <p class="listing-card-desc">@listing.Description</p>
+                        <p class="listing-card-price">
+                            Current Bid: <strong>Rs @listing.Price.ToString("N2")</strong>
+                        </p>
 
+                        <p class="listing-card-user">
+                            <small class="text-muted">Listed by: @listing.User.Email</small>
+                        </p>
+
+                        <div class="listing-card-timer">
+                            <strong>Time Remaining:</strong>
+                            <span class="auction-timer @(listing.IsSold ? "timer-closed" : "timer-active")"
+                                  data-closing-time="@listing.ClosingTime.ToString("o")">
+                                @(listing.IsSold ? "Bidding Closed" : "Calculating...")
+                            </span>
+                        </div>
+
+                        <div class="listing-card-action mt-3">
                             @if (!listing.IsSold)
                             {
-                                <a asp-action="Details" asp-route-id="@listing.Id" class="btn btn-gold">View Details</a>
+                                <a asp-action="Details" asp-route-id="@listing.Id" class="btn btn-primary btn-bid-details w-100">View Details & Bid</a>
                             }
                             else
                             {
-                                <button class="btn btn-secondary" disabled>Bidding Closed</button>
+                                <button class="btn btn-secondary w-100" disabled>Bidding Closed</button>
                             }
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     }
 
-    <!-- Pagination -->
-    <div class="d-flex justify-content-center mt-4">
-        @{
-            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-        }
-        <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-secondary me-2 @prevDisabled">Previous</a>
-        <span class="btn btn-light" style="cursor: default;">Page @Model.PageIndex of @Model.TotalPages</span>
-        <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-secondary ms-2 @nextDisabled">Next</a>
-    </div>
-</div>
-
-<!-- Countdown Timer Script -->
-<script>
-    document.querySelectorAll("[id^='timer-']").forEach(timer => {
-        const closingTime = new Date(timer.dataset.closingTime);
-
-        function updateTimer() {
-            const now = new Date();
-            const diff = closingTime - now;
-
-            if (diff <= 0) {
-                timer.textContent = "Bidding Closed";
-                timer.style.color = "red";
-                return;
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center mt-5">
+            @{
+                var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.HasNextPage ? "disabled" : "";
             }
 
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff / (1000 * 60)) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
+            <li class="page-item @prevDisabled">
+                <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" class="page-link">Previous</a>
+            </li>
 
-            timer.textContent = `${hours}h ${minutes}m ${seconds}s`;
-        }
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                    <a asp-action="Index" asp-route-pageNumber="@i" class="page-link">@i</a>
+                </li>
+            }
 
-        updateTimer();
-        setInterval(updateTimer, 1000);
-    });
-</script>
+            <li class="page-item @nextDisabled">
+                <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" class="page-link">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const timers = document.querySelectorAll(".auction-timer:not(.timer-closed)");
+            if (timers.length === 0) return;
+
+            function updateAllTimers() {
+                const now = new Date();
+
+                timers.forEach(timer => {
+                    // Check if timer has already been marked as closed by this script
+                    if (timer.classList.contains('timer-closed-dynamic')) {
+                        return;
+                    }
+
+                    const closingTime = new Date(timer.dataset.closingTime);
+                    const diff = closingTime - now;
+
+                    if (diff <= 0) {
+                        // Time is up
+                        timer.textContent = "Bidding Closed";
+                        timer.classList.remove("timer-active");
+                        timer.classList.add("timer-closed", "timer-closed-dynamic"); // Add dynamic flag
+
+                        // Find the 'View Details' button in this card and disable it
+                        const card = timer.closest('.listing-card');
+                        if (card) {
+                            const button = card.querySelector('.btn-bid-details');
+                            if (button) {
+                                button.textContent = "Bidding Closed";
+                                button.classList.remove("btn-primary");
+                                button.classList.add("btn-secondary", "disabled");
+                            }
+                        }
+                    } else {
+                        // Time is still remaining
+                        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                        const seconds = Math.floor((diff / 1000) % 60);
+
+                        if (days > 0) {
+                            timer.textContent = `${days}d ${hours}h ${minutes}m`;
+                        } else {
+                            timer.textContent = `${hours}h ${minutes}m ${seconds}s`;
+                        }
+                    }
+                });
+            }
+
+            updateAllTimers(); // Run once on load
+            setInterval(updateAllTimers, 1000); // Run every second
+        });
+    </script>
+}

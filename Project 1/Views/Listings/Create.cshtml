@@ -28,6 +28,18 @@
             </div>
 
             <div class="mb-3">
+                <label asp-for="Category" class="form-label"></label>
+                <select asp-for="Category" class="form-select">
+                    <option value="">-- Select a Category --</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Art">Art & Paintings</option>
+                    <option value="Jewelry">Jewelry</option>
+                    <option value="Collectibles">Collectibles</option>
+                    <option value="Other">Other</option>
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
                 <label asp-for="Price" class="form-label">Starting Bid</label>
                 <input asp-for="Price" class="form-control" placeholder="Enter starting price" />
                 <span asp-validation-for="Price" class="text-danger"></span>
@@ -39,7 +51,6 @@
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
 
-            <!-- 🔥 Add auction closing time duration -->
             <div class="mb-3">
                 <label class="form-label">Auction Duration</label>
                 <div class="d-flex gap-3">

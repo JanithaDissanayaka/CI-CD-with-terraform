@@ -87,17 +87,34 @@ namespace Project_1.Controllers
         }
 
         // GET: Listings
-        public async Task<IActionResult> Index(int? pageNumber, string searchString)
+        // ============================================
+        // EDITED: Added 'string category' parameter and filter logic
+        // ============================================
+        public async Task<IActionResult> Index(int? pageNumber, string searchString, string category)
         {
             await CheckAndCloseExpiredListings();
-            var listings = _listingsService.GetAll();
+
+            // Set base title and pass category to view
+            ViewData["Title"] = "Open Bids";
+            ViewData["CurrentCategory"] = category;
+
+            var listings = _listingsService.GetAll(); // Assuming this returns IQueryable
             int pageSize = 3;
 
+            // --- Apply Category Filter ---
+            if (!string.IsNullOrEmpty(category))
+            {
+                listings = listings.Where(l => l.Category == category);
+                ViewData["Title"] = category; // Update page title
+            }
+
+            // --- Apply Search Filter ---
             if (!string.IsNullOrEmpty(searchString))
             {
                 listings = listings.Where(a => a.Title.Contains(searchString));
             }
 
+            // Apply final filter for 'IsSold' and paginate
             return View(await PaginatedList<Listing>.CreateAsync(
                 listings.Where(l => !l.IsSold).AsNoTracking(),
                 pageNumber ?? 1, pageSize));
@@ -147,6 +164,9 @@ namespace Project_1.Controllers
         }
 
         // POST: Listings/Create
+        // ============================================
+        // EDITED: Added 'Category = listing.Category'
+        // ============================================
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ListingVM listing)
@@ -166,8 +186,8 @@ namespace Project_1.Controllers
 
                 // 🕒 Combine days, hours, and minutes properly
                 var totalDuration = TimeSpan.FromDays(listing.ClosingDays)
-                                   + TimeSpan.FromHours(listing.ClosingHours)
-                                   + TimeSpan.FromMinutes(listing.ClosingMinutes);
+                                    + TimeSpan.FromHours(listing.ClosingHours)
+                                    + TimeSpan.FromMinutes(listing.ClosingMinutes);
 
                 // ✅ Validate total duration
                 if (totalDuration.TotalMinutes <= 0)
@@ -183,6 +203,8 @@ namespace Project_1.Controllers
                     Price = listing.Price,
                     IdentityUserId = identityUserId,
                     ImagePath = fileName,
+
+                    Category = listing.Category, // <-- ADDED THIS LINE
 
                     // ✅ Now includes days too
                     ClosingTime = DateTime.Now.Add(totalDuration),
