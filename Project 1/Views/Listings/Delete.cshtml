@@ -2,14 +2,15 @@
 
 @{
     ViewData["Title"] = "Delete Listing";
-    Layout = "_Layout"; // Use the shared layout
+    Layout = "_Layout"; // Shared layout
 }
 
 <div class="container mt-5">
     <section class="card shadow-sm p-5" style="background-color: #fdfbf7; border-radius: 10px;">
-        <h1 class="display-4 text-center mb-4" style="color: #4b2c20;">Delete Listing</h1>
+        <h1 class="display-4 text-center mb-3" style="color: #4b2c20;">Delete Listing</h1>
         <p class="text-center text-muted mb-4">Are you sure you want to delete this item?</p>
 
+        <!-- Listing Details -->
         <div class="listing-details mb-4">
             <dl class="row">
                 <dt class="col-sm-3">Title</dt>
@@ -25,7 +26,7 @@
                 <dd class="col-sm-9">
                     @if (!string.IsNullOrEmpty(Model.ImagePath))
                     {
-                        <img src="~/uploads/@Model.ImagePath" alt="@Model.Title" style="max-width:200px; border-radius:5px;" />
+                        <img src="~/uploads/@Model.ImagePath" alt="@Model.Title" class="img-fluid rounded" style="max-width: 200px;" />
                     }
                 </dd>
 
@@ -37,12 +38,13 @@
             </dl>
         </div>
 
+        <!-- Action Buttons -->
         <div class="text-center">
-            <form asp-action="Delete" method="post">
+            <form asp-action="Delete" method="post" class="d-inline-block">
                 <input type="hidden" asp-for="Id" />
                 <button type="submit" class="btn btn-danger btn-lg me-2">Delete</button>
-                <a asp-action="Index" class="btn btn-secondary btn-lg">Back to Listings</a>
             </form>
+            <a asp-action="Index" class="btn btn-secondary btn-lg">Back to Listings</a>
         </div>
     </section>
 </div>

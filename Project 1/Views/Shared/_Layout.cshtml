@@ -6,12 +6,9 @@
     <title>@ViewData["Title"] - Antique Auctions</title>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -20,9 +17,10 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark navbar-theme shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index" style="padding-right:50px;">
                     <i class="bi bi-gavel me-2"></i> Antique Auctions
                 </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -38,18 +36,27 @@
                             <a class="nav-link @((ViewData["ActivePage"] as string) == "Auctions" ? "active" : "")"
                                asp-area="" asp-controller="Listings" asp-action="Index">Auctions</a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link @((ViewData["ActivePage"] as string) == "Create" ? "active" : "")"
+                               asp-controller="Listings" asp-action="Create">Create</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @((ViewData["ActivePage"] as string) == "MyBids" ? "active" : "")"
+                               asp-controller="Listings" asp-action="MyBids">My Bids</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @((ViewData["ActivePage"] as string) == "MyListings" ? "active" : "")"
+                               asp-controller="Listings" asp-action="MyListings">My Listings</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link @((ViewData["ActivePage"] as string) == "About" ? "active" : "")"
                                asp-area="" asp-controller="Home" asp-action="Aboutus">About Us</a>
                         </li>
 
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link @((ViewData["ActivePage"] as string) == "AdminDashboard" ? "active" : "")"
-                                   asp-area="" asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
-                            </li>
-                        }
+
+
+                        
                     </ul>
 
                     <form class="d-flex me-3" asp-controller="Listings" asp-action="Index" method="get">
@@ -61,25 +68,30 @@
                     {
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-circle me-1"></i> My Account
+                                <i class="bi bi-person-circle me-1"></i> @User.Identity.Name
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                 <li><a class="dropdown-item" asp-controller="Listings" asp-action="Create">Create Auction</a></li>
                                 <li><a class="dropdown-item" asp-controller="Listings" asp-action="MyListings">My Listings</a></li>
                                 <li><a class="dropdown-item" asp-controller="Listings" asp-action="MyBids">My Bids</a></li>
-                                <li><a class="dropdown-item" asp-controller="Listings" asp-action="WonBids">Won Bids</a></li>
+                                <li> <a class="dropdown-item" asp-controller="Listings" asp-action="WonBids">Won Bids</a>  </li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Account Settings</a></li>
-                                <li><partial name="_LoginPartial" /></li>
+                                <li>
+                                    <form class="dropdown-item p-0 m-0" asp-area="Views" asp-page="/Home/Index" method="post" id="logoutForm">
+                                        <button type="submit" class="btn btn-link text-decoration-none w-100 text-start">Logout</button>
+                                    </form>
+                                </li>
                             </ul>
                         </div>
                     }
                     else
-                    {
-                        <div class="d-flex">
-                            <partial name="_LoginPartial" />
-                        </div>
-                    }
+                    
+                        {
+                        <a class="btn btn-gold btn-sm me-2" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                        <a class="btn btn-gold btn-sm" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        }
+
                 </div>
             </div>
         </nav>
@@ -89,14 +101,17 @@
         @RenderBody()
     </main>
 
-    <footer class="footer-section text-center border-top">
-        <div class="container py-4">
-            <p class="mb-1">
+    <footer class="footer-section border-top">
+        <div class="container footer-container d-flex justify-content-between py-3">
+            <div class="footer-left">
                 <a asp-area="" asp-controller="Home" asp-action="Index">Home</a> |
                 <a asp-area="" asp-controller="Listings" asp-action="Index">Auctions</a> |
                 <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
-            </p>
-            <p class="mb-0">&copy; @DateTime.Now.Year - Antique Auctions. All Rights Reserved.</p>
+            </div>
+            <div class="footer-right text-end">
+                <p>Antique Auctions</p>
+                <p>&copy; @DateTime.Now.Year - All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 

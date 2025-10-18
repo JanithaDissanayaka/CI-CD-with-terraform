@@ -1,6 +1,5 @@
 ﻿@model Project_1.Models.Listing
 @using Microsoft.AspNetCore.Identity
-
 @inject UserManager<IdentityUser> userManager
 
 @{
@@ -11,73 +10,71 @@
     var currentPrice = highestBid?.Price ?? Model.Price;
     var listingId = Model.Id;
     var isListingOwner = userManager.GetUserId(User) == Model.IdentityUserId;
-    var currentPriceFormatted = currentPrice.ToString("F2");
 }
 
 <div class="container mt-5">
-    <div class="card shadow-sm p-4" style="background-color: #fdfbf7; border-radius: 10px;">
-        <h1 class="display-4 text-center mb-3" style="color: #4b2c20;">@Model.Title</h1>
+    <div class="listing-card p-4">
+        <!-- Title -->
+        <h1 class="section-title text-center mb-4">@Model.Title</h1>
 
-        @* ---------- Auction Status Messages ---------- *@
-        @if (User.Identity.IsAuthenticated && Model.IsSold && highestBid != null)
+        <!-- Auction Status -->
+        @if (Model.IsSold)
         {
-            <div class="alert alert-success text-center">
-                @if (highestBid.IdentityUserId == userManager.GetUserId(User))
+            <div class="alert text-center @(highestBid != null ? "alert-success" : "alert-info")">
+                @if (highestBid != null)
                 {
-                    <p><strong>Congratulations!</strong> You are the winner with a bid of Rs @highestBid.Price.ToString("N2")!</p>
-                }
-                else if (isListingOwner)
-                {
-                    <p><strong>@highestBid.User.UserName</strong> won with a bid of Rs @highestBid.Price.ToString("N2")!</p>
+                    @if (highestBid.IdentityUserId == userManager.GetUserId(User))
+                    {
+                        <p><strong>🎉 Congratulations!</strong> You won with Rs @highestBid.Price.ToString("N2")!</p>
+                    }
+                    else if (isListingOwner)
+                    {
+                        <p><strong>@highestBid.User.UserName</strong> won with Rs @highestBid.Price.ToString("N2")!</p>
+                    }
+                    else
+                    {
+                        <p><strong>Bidding Closed!</strong></p>
+                    }
                 }
                 else
                 {
-                    <p><strong>Bidding is closed!</strong></p>
+                    <p><strong>Bidding Closed!</strong> No bids were placed.</p>
                 }
             </div>
         }
-        else if (Model.IsSold && highestBid == null)
-        {
-            <div class="alert alert-info text-center">
-                <p><strong>Bidding is closed!</strong> No bids were placed on this item.</p>
-            </div>
-        }
 
+        <!-- Listing Details -->
         <div class="row">
-            <div class="col-md-5">
-                <img src="~/Images/@Model.ImagePath" alt="@Model.Title" class="img-fluid rounded" style="max-height: 60vh;" />
+            <!-- Image -->
+            <div class="col-md-5 mb-3 mb-md-0">
+                <img src="~/Images/@Model.ImagePath" alt="@Model.Title" class="listing-card-img rounded" />
             </div>
 
-            <div class="col-md-7">
-                <p class="mb-3" style="color:#4b2c20;">@Model.Description</p>
+            <!-- Details -->
+            <div class="col-md-7 d-flex flex-column">
+                <p class="listing-card-desc mb-3">@Model.Description</p>
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <p>
-                        Highest Bid: <strong style="color:#b8860b;">
-                            Rs <span id="highestBidAmount">@currentPrice.ToString("N2")</span>
-                        </strong>
+                    <p class="listing-card-price">
+                        Highest Bid: <strong>Rs <span id="highestBidAmount">@currentPrice.ToString("N2")</span></strong>
                     </p>
 
-                    @* ---------- Bidding Controls ---------- *@
                     @if (isListingOwner)
                     {
                         <h6>Bidding History:</h6>
-                        <ul>
-                            @if (Model.Bids != null && Model.Bids.Any())
+                        <ul class="mb-3">
+                            @if (Model.Bids?.Any() ?? false)
                             {
                                 @foreach (var bid in Model.Bids.OrderByDescending(b => b.Price))
                                 {
                                     <li>
-                                        @bid.User.UserName bidded Rs @bid.Price.ToString("N2")
+                                        @bid.User.UserName bid Rs @bid.Price.ToString("N2")
                                         @if (!Model.IsSold)
                                         {
-                                            <form asp-action="DeleteBid" asp-route-id="@bid.Id" method="post" style="display:inline;">
+                                            <form asp-action="DeleteBid" asp-route-id="@bid.Id" method="post" class="d-inline">
                                                 @Html.AntiForgeryToken()
-                                                <button type="submit" class="btn btn-sm btn-danger ms-2"
-                                                        onclick="return confirm('Are you sure you want to delete this bid?');">
-                                                    Delete
-                                                </button>
+                                                <button type="submit" class="btn btn-sm btn-danger ms-2" onclick="return confirm('Delete this bid?');">Delete</button>
                                             </form>
                                         }
                                     </li>
@@ -85,7 +82,7 @@
                             }
                             else
                             {
-                                <li>No bids placed yet.</li>
+                                <li>No bids yet.</li>
                             }
                         </ul>
 
@@ -93,37 +90,30 @@
                         {
                             <p class="card-text">
                                 <strong>Time Remaining:</strong>
-                                <span id="timer-@Model.Id"
-                                      data-closing-time="@Model.ClosingTime.ToString("o")"
-                                      style="color:@(Model.IsSold ? "red" : "green"); font-weight:bold;">
-                                    @(Model.IsSold ? "Bidding Closed" : "")
-                                </span>
+                                <span id="timer-@Model.Id" data-closing-time="@Model.ClosingTime.ToString("o")" class="auction-timer timer-active"></span>
                             </p>
 
-                            <form asp-action="CloseBidding" asp-route-id="@Model.Id" method="post" class="mt-2">
-                                @Html.AntiForgeryToken()
-                                <button type="submit" class="btn btn-danger">Close Bidding</button>
-                            </form>
+                            <div class="d-flex gap-2 mt-2">
+                                <form asp-action="CloseBidding" asp-route-id="@Model.Id" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-danger btn-sm">Close Bidding</button>
+                                </form>
 
-                            <form asp-action="DeleteListing" asp-route-id="@Model.Id" method="post" class="mt-2">
-                                @Html.AntiForgeryToken()
-                                <button type="submit" class="btn btn-warning">Delete Listing</button>
-                            </form>
+                                <form asp-action="DeleteListing" asp-route-id="@Model.Id" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-warning btn-sm">Delete Listing</button>
+                                </form>
+                            </div>
                         }
                     }
                     else if (!Model.IsSold)
                     {
-                        <form asp-controller="Listings" asp-action="AddBid" method="post" class="mt-4" id="bidForm">
+                        <form asp-controller="Listings" asp-action="AddBid" method="post" class="mt-3">
                             <div class="input-group mb-3">
-                                <input type="number"
-                                       name="Price"
-                                       id="bidInputPrice"
-                                       class="form-control"
-                                       placeholder="Enter your bid (Rs @(currentPrice + 0.01) minimum)"
-                                       min="@(currentPrice + 0.01)"
-                                       step="0.01"
-                                       required />
-                                <button type="submit" class="btn btn-warning" id="placeBidButton">Place Bid</button>
+                                <input type="number" name="Price" class="form-control"
+                                       placeholder="Enter bid (Rs @(currentPrice + 0.01) min)"
+                                       min="@(currentPrice + 0.01)" step="0.01" required />
+                                <button type="submit" class="btn btn-gold">Place Bid</button>
                             </div>
                             <input type="hidden" name="ListingId" value="@Model.Id" />
                             <input type="hidden" name="IdentityUserId" value="@userManager.GetUserId(User)" />
@@ -135,36 +125,43 @@
                     <p class="text-muted">Sign in to place a bid.</p>
                 }
 
-                <p>Listed by: <strong>@Model.User.UserName</strong></p>
+                <p class="mt-auto">Listed by: <strong>@Model.User.UserName</strong></p>
             </div>
         </div>
 
-        @* ---------- Payment Section ---------- *@
-        <hr class="my-4" />
-
-        @if (User.Identity.IsAuthenticated && Model.IsSold && highestBid != null)
+        <!-- ✅ Payment Section -->
+        @if (Model.IsSold && highestBid != null)
         {
-            if (highestBid.IdentityUserId == userManager.GetUserId(User))
-            {
-                <div class="text-center mt-3">
-                    <p class="text-success fw-bold">🎉 Congratulations! You won this auction.</p>
+            <div class="text-center mt-4">
+                @if (highestBid.IdentityUserId == userManager.GetUserId(User))
+                {
+                    <p class="fw-bold text-success">🎉 You won this auction with Rs @highestBid.Price.ToString("N2")!</p>
 
-                    <form asp-controller="Payment" asp-action="CreateCheckoutSession" method="post">
-                        <input type="hidden" name="amount" value="@highestBid.Price" />
-                        <input type="hidden" name="listingId" value="@Model.Id" />
-                        <button type="submit" class="btn btn-success btn-lg">Pay Now</button>
-                    </form>
-                </div>
-            }
-            else if (isListingOwner)
-            {
-                <div class="text-center mt-3">
-                    <p class="text-primary fw-bold">
-                        The winning bidder <strong>@highestBid.User.UserName</strong> won with Rs @highestBid.Price.ToString("N2").
-                        Waiting for payment...
-                    </p>
-                </div>
-            }
+                    @if (highestBid.IsPaid)
+                    {
+                        <p class="text-success fw-bold mt-2">✅ Payment Completed</p>
+                    }
+                    else
+                    {
+                        <form asp-controller="Payment" asp-action="CreateCheckoutSession" method="post" class="mt-3">
+                            <input type="hidden" name="amount" value="@highestBid.Price" />
+                            <input type="hidden" name="listingId" value="@Model.Id" />
+                            <button type="submit" class="btn btn-gold btn-lg">Pay Now</button>
+                        </form>
+                    }
+                }
+                else if (isListingOwner)
+                {
+                    @if (highestBid.IsPaid)
+                    {
+                        <p class="text-success fw-bold">✅ Winner has completed payment.</p>
+                    }
+                    else
+                    {
+                        <p class="text-danger fw-bold">❌ Winner has not paid yet.</p>
+                    }
+                }
+            </div>
         }
 
         <hr class="my-4" />
@@ -186,72 +183,51 @@
         }
 
         <div class="mt-3">
-            @{
-                int commentNumber = 1;
-            }
-            @foreach (var comment in Model.Comments)
+            @for (int i = 0; i < Model.Comments.Count; i++)
             {
-                <div class="border p-2 mb-2 rounded" style="background-color:#fff8e7; color:#4b2c20;">
-                    <strong>@commentNumber. @comment.User.UserName:</strong> @comment.Content
+                <div class="border p-2 mb-2 rounded" style="background-color: var(--color-accent-light); color: var(--color-primary);">
+                    <strong>@(i + 1). @Model.Comments[i].User.UserName:</strong> @Model.Comments[i].Content
                 </div>
-                commentNumber++;
             }
         </div>
     </div>
 </div>
 
-@* ---------------------------- SignalR for Real-time Bids ---------------------------- *@
-<script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
-<script>
-    const currentListingId = @listingId;
-    const bidInput = document.getElementById("bidInputPrice");
-    const highestBidElement = document.getElementById("highestBidAmount");
+@section Scripts {
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const highestBidElement = document.getElementById("highestBidAmount");
+            const connection = new signalR.HubConnectionBuilder().withUrl("/bidHub").build();
+            const currentListingId = @listingId;
 
-    const connection = new signalR.HubConnectionBuilder()
-        .withUrl("/bidHub")
-        .build();
+            connection.on("ReceiveNewHighestBid", function (newBid) {
+                if (highestBidElement) highestBidElement.innerText = newBid;
+            });
 
-    connection.on("ReceiveNewHighestBid", function (newHighestBidAmount) {
-        if (highestBidElement) {
-            highestBidElement.innerText = newHighestBidAmount;
-        }
-        if (bidInput) {
-            const newMinBid = (parseFloat(newHighestBidAmount) + 0.01).toFixed(2);
-            bidInput.min = newMinBid;
-            bidInput.placeholder = `Enter your bid (Rs ${newMinBid} minimum)`;
-        }
-    });
+            connection.start().then(() => {
+                connection.invoke("JoinListingGroup", currentListingId).catch(err => console.error(err.toString()));
+            });
 
-    connection.start().then(function () {
-        connection.invoke("JoinListingGroup", currentListingId)
-            .catch(err => console.error(err.toString()));
-    }).catch(function (err) {
-        return console.error(err.toString());
-    });
-</script>
-
-<script>
-    document.querySelectorAll("[id^='timer-']").forEach(timer => {
-        const closingTime = new Date(timer.dataset.closingTime);
-
-        function updateTimer() {
-            const now = new Date();
-            const diff = closingTime - now;
-
-            if (diff <= 0) {
-                timer.textContent = "Bidding Closed";
-                timer.style.color = "red";
-                return;
-            }
-
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff / (1000 * 60)) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
-
-            timer.textContent = `${hours}h ${minutes}m ${seconds}s`;
-        }
-
-        updateTimer();
-        setInterval(updateTimer, 1000);
-    });
-</script>
+            // Timer
+            document.querySelectorAll("[id^='timer-']").forEach(timer => {
+                const closingTime = new Date(timer.dataset.closingTime);
+                const updateTimer = () => {
+                    const diff = closingTime - new Date();
+                    if (diff <= 0) {
+                        timer.textContent = "Bidding Closed";
+                        timer.classList.remove("timer-active");
+                        timer.classList.add("timer-closed");
+                        return;
+                    }
+                    const hours = Math.floor(diff / (1000 * 60 * 60));
+                    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                    const seconds = Math.floor((diff / 1000) % 60);
+                    timer.textContent = `${hours}h ${minutes}m ${seconds}s`;
+                };
+                updateTimer();
+                setInterval(updateTimer, 1000);
+            });
+        });
+    </script>
+}

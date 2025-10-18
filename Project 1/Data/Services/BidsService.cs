@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project_1.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Project_1.Data.Services
 {
@@ -20,14 +23,19 @@ namespace Project_1.Data.Services
 
         public IQueryable<Bid> GetAll()
         {
-            var applicationDbContext = from a in _context.Bids.Include(l => l.Listing).ThenInclude(l => l.User)
-                                       select a;
-            return applicationDbContext;
+            return _context.Bids
+                           .Include(b => b.Listing)
+                           .ThenInclude(l => l.User);
         }
 
-        public Task<string?> GetWonBidsAsync(string? userId)
+        public async Task<List<Bid>> GetWonBidsAsync(string userId)
         {
-            throw new NotImplementedException();
+            // Only include bids for listings that are sold
+            return await _context.Bids
+                .Include(b => b.Listing)
+                .Where(b => b.IdentityUserId == userId && b.Listing.IsSold)
+                .OrderByDescending(b => b.Listing.ClosingTime)
+                .ToListAsync();
         }
     }
 }

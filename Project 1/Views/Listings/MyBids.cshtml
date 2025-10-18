@@ -1,55 +1,73 @@
 ﻿@model PaginatedList<Project_1.Models.Bid>
 
+
 @{
     ViewData["Title"] = "My Bids";
     Layout = "_Layout";
 }
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4" style="color: #4b2c20;">My Bids</h2>
+<div class="container my-5">
+    <h2 class="text-center mb-5" style="color: #4b2c20; font-weight: 600;">My Bids</h2>
 
     @if (!Model.Any())
     {
-        <div class="alert alert-info text-center">
+        <div class="alert alert-info text-center py-4" style="font-size: 1.1rem;">
             You have not placed any bids yet.
         </div>
     }
     else
     {
-        @foreach (var bid in Model)
-        {
-            <div class="card shadow-sm mb-4" style="background-color: #fdfbf7; border-radius: 10px;">
-                <div class="row g-0">
-                    <div class="col-md-5">
-                        <img src="~/Images/@bid.Listing.ImagePath" class="img-fluid rounded-start" style="max-height: 300px; object-fit: cover;" />
-                    </div>
-                    <div class="col-md-7">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <a asp-action="Details" asp-route-id="@bid.Listing.Id" style="color: #4b2c20; text-decoration: none;">
-                                    @bid.Listing.Title
-                                </a>
-                            </h5>
-                            <p class="card-text">@bid.Listing.Description</p>
-                            <p class="card-text"><strong>Your Bid:</strong> $@bid.Price.ToString("N2")</p>
-                            <p class="card-text"><small class="text-muted">Listed by: @bid.Listing.User.Email</small></p>
-                            <a asp-action="Details" asp-route-id="@bid.Listing.Id" class="btn btn-gold">View Listing</a>
+        <div class="row row-cols-1 g-4">
+            @foreach (var bid in Model)
+            {
+                <div class="col">
+                    <div class="card shadow-sm border-0" style="border-radius: 12px; overflow: hidden; background-color: #fdfbf7;">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-5">
+                                <img src="~/Images/@bid.Listing.ImagePath" class="img-fluid w-100" style="height: 250px; object-fit: cover;" alt="@bid.Listing.Title" />
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-2">
+                                        <a asp-action="Details" asp-route-id="@bid.Listing.Id" style="color: #4b2c20; text-decoration: none; font-weight: 600;">
+                                            @bid.Listing.Title
+                                        </a>
+                                    </h5>
+                                    <p class="card-text text-muted mb-2" style="font-size: 0.95rem;">
+                                        @bid.Listing.Description
+                                    </p>
+                                    <p class="card-text mb-2" style="font-size: 0.95rem;">
+                                        <strong>Your Bid:</strong> $@bid.Price.ToString("N2")
+                                    </p>
+                                    <p class="card-text mb-3" style="font-size: 0.85rem; color: #6c757d;">
+                                        Listed by: @bid.Listing.User.Email
+                                    </p>
+                                    <a asp-action="Details" asp-route-id="@bid.Listing.Id" class="btn btn-gold px-4 py-2">
+                                        View Listing
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     }
 
     <!-- Pagination -->
-    <div class="d-flex justify-content-center mt-4">
+    <div class="d-flex justify-content-center align-items-center mt-5">
         @{
             var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
             var nextDisabled = !Model.HasNextPage ? "disabled" : "";
         }
-        <a asp-action="MyBids" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-secondary me-2 @prevDisabled">Previous</a>
-        <span class="btn btn-light" style="cursor: default;">Page @Model.PageIndex of @Model.TotalPages</span>
-        <a asp-action="MyBids" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-secondary ms-2 @nextDisabled">Next</a>
-
+        <a asp-action="MyBids" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-outline-secondary me-3 @prevDisabled">
+            <i class="bi bi-chevron-left"></i> Previous
+        </a>
+        <span class="px-3 py-2 border rounded text-muted" style="min-width: 120px; text-align: center;">
+            Page @Model.PageIndex of @Model.TotalPages
+        </span>
+        <a asp-action="MyBids" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-outline-secondary ms-3 @nextDisabled">
+            Next <i class="bi bi-chevron-right"></i>
+        </a>
     </div>
 </div>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations.Schema;
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project_1.Models
 {
@@ -23,6 +24,9 @@ namespace Project_1.Models
 
         // ✅ New property for admin approval
         public bool IsApproved { get; set; } = false;
+
+        // ✅ New property to track payment
+        public bool IsPaid { get; set; } = false;
 
         // Optional: timestamp for bid
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

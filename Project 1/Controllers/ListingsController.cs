@@ -54,101 +54,112 @@ namespace Project_1.Controllers
                     .ThenInclude(b => b.User)
                 .ToListAsync();
 
-            if (expiredListings.Any())
+            foreach (var listing in expiredListings)
             {
-                foreach (var listing in expiredListings)
+                listing.IsSold = true;
+
+                var highestBid = listing.Bids?.OrderByDescending(b => b.Price).FirstOrDefault();
+                if (highestBid != null && highestBid.User != null)
                 {
-                    listing.IsSold = true;
+                    string subject = "Congratulations! You have won the bid!";
+                    string message = $"Dear {highestBid.User.UserName},\n\n" +
+                                     $"You have won the bid for '{listing.Title}' with Rs {highestBid.Price:N2}.\n\n" +
+                                     "Please contact us to finalize the transaction.\n\n" +
+                                     "Best regards,\nAuction Team";
 
-                    var highestBid = listing.Bids?.OrderByDescending(b => b.Price).FirstOrDefault();
-                    if (highestBid != null && highestBid.User != null)
+                    try
                     {
-                        string subject = "Congratulations! You have won the bid!";
-                        string message = $"Dear {highestBid.User.UserName},\n\n" +
-                                         $"You have won the bid for '{listing.Title}' with Rs {highestBid.Price:N2}.\n\n" +
-                                         "Please contact us to finalize the transaction.\n\n" +
-                                         "Best regards,\nAuction Team";
-
-                        try
-                        {
-                            await _emailSender.SendEmailAsync(highestBid.User.Email, subject, message);
-                        }
-                        catch (Exception ex)
-                        {
-                            _logger.LogError("Error sending email: " + ex.Message);
-                        }
+                        await _emailSender.SendEmailAsync(highestBid.User.Email, subject, message);
                     }
-
-                    await _hubContext.Clients.All.SendAsync("BidClosed", listing.Id);
+                    catch (Exception ex)
+                    {
+                        _logger.LogError("Error sending email: " + ex.Message);
+                    }
                 }
 
-                await _context.SaveChangesAsync();
+                await _hubContext.Clients.All.SendAsync("BidClosed", listing.Id);
             }
+
+            if (expiredListings.Any()) await _context.SaveChangesAsync();
         }
 
-        // GET: Listings
-        // ============================================
-        // EDITED: Added 'string category' parameter and filter logic
-        // ============================================
-        public async Task<IActionResult> Index(int? pageNumber, string searchString, string category)
+        // ✅ GET: Listings
+        public async Task<IActionResult> Index(string searchString, string category)
         {
             await CheckAndCloseExpiredListings();
 
-            // Set base title and pass category to view
             ViewData["Title"] = "Open Bids";
             ViewData["CurrentCategory"] = category;
+            ViewData["ActivePage"] = "Auctions";
 
-            var listings = _listingsService.GetAll(); // Assuming this returns IQueryable
-            int pageSize = 3;
+            var listings = _listingsService.GetAll();
 
-            // --- Apply Category Filter ---
             if (!string.IsNullOrEmpty(category))
             {
                 listings = listings.Where(l => l.Category == category);
-                ViewData["Title"] = category; // Update page title
+                ViewData["Title"] = category;
             }
 
-            // --- Apply Search Filter ---
             if (!string.IsNullOrEmpty(searchString))
             {
-                listings = listings.Where(a => a.Title.Contains(searchString));
+                listings = listings.Where(l => l.Title.Contains(searchString));
             }
 
-            // Apply final filter for 'IsSold' and paginate
-            return View(await PaginatedList<Listing>.CreateAsync(
-                listings.Where(l => !l.IsSold).AsNoTracking(),
-                pageNumber ?? 1, pageSize));
+            var allListings = await listings
+                .Where(l => !l.IsSold)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return View(allListings);
         }
 
-        public async Task<IActionResult> MyListings(int? pageNumber)
+        // ✅ GET: My Listings
+        public async Task<IActionResult> MyListings()
         {
             await CheckAndCloseExpiredListings();
-            var listings = _listingsService.GetAll();
-            int pageSize = 3;
+            ViewData["ActivePage"] = "MyListings";
 
-            return View("Index", await PaginatedList<Listing>.CreateAsync(
-                listings.Where(l => l.IdentityUserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
-                        .AsNoTracking(),
-                pageNumber ?? 1, pageSize));
+            var listings = _listingsService.GetAll()
+                .Where(l => l.IdentityUserId == User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            var allListings = await listings.AsNoTracking().ToListAsync();
+
+            return View("Index", allListings);
         }
 
+        // ✅ FIXED: GET: My Bids (Paginated)
         public async Task<IActionResult> MyBids(int? pageNumber)
         {
             await CheckAndCloseExpiredListings();
-            var bids = _bidsService.GetAll();
-            int pageSize = 3;
+            ViewData["ActivePage"] = "MyBids";
 
-            return View(await PaginatedList<Bid>.CreateAsync(
-                bids.Where(l => l.IdentityUserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
-                    .AsNoTracking(),
-                pageNumber ?? 1, pageSize));
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var bidsQuery = _bidsService.GetAll()
+                .Include(b => b.Listing)
+                    .ThenInclude(l => l.User)
+                .Where(b => b.IdentityUserId == userId)
+                .OrderByDescending(b => b.CreatedAt);
+
+            int pageSize = 5; // Number of bids per page
+            var paginatedBids = await PaginatedList<Bid>.CreateAsync(bidsQuery.AsNoTracking(), pageNumber ?? 1, pageSize);
+
+            return View(paginatedBids);
         }
 
-        // GET: Listings/Details/5
+        // ✅ GET: Won Bids
+        public async Task<IActionResult> WonBids()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var wonBids = await _bidsService.GetWonBidsAsync(userId);
+            ViewData["ActivePage"] = "WonBids";
+            return View(wonBids);
+        }
+
+        // ✅ GET: Listing Details
         public async Task<IActionResult> Details(int? id)
         {
             await CheckAndCloseExpiredListings();
-
             if (id == null) return NotFound();
 
             var listing = await _listingsService.GetById(id);
@@ -157,16 +168,10 @@ namespace Project_1.Controllers
             return View(listing);
         }
 
-        // GET: Listings/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        // ✅ GET: Create
+        public IActionResult Create() => View();
 
-        // POST: Listings/Create
-        // ============================================
-        // EDITED: Added 'Category = listing.Category'
-        // ============================================
+        // ✅ POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ListingVM listing)
@@ -181,15 +186,12 @@ namespace Project_1.Controllers
                 await listing.Image.CopyToAsync(fileStream);
 
                 var identityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                if (identityUserId == null)
-                    return Unauthorized();
+                if (identityUserId == null) return Unauthorized();
 
-                // 🕒 Combine days, hours, and minutes properly
                 var totalDuration = TimeSpan.FromDays(listing.ClosingDays)
                                     + TimeSpan.FromHours(listing.ClosingHours)
                                     + TimeSpan.FromMinutes(listing.ClosingMinutes);
 
-                // ✅ Validate total duration
                 if (totalDuration.TotalMinutes <= 0)
                 {
                     ModelState.AddModelError("", "Please set a valid auction duration.");
@@ -203,12 +205,8 @@ namespace Project_1.Controllers
                     Price = listing.Price,
                     IdentityUserId = identityUserId,
                     ImagePath = fileName,
-
-                    Category = listing.Category, // <-- ADDED THIS LINE
-
-                    // ✅ Now includes days too
+                    Category = listing.Category,
                     ClosingTime = DateTime.Now.Add(totalDuration),
-
                     IsSold = false
                 };
 
@@ -219,11 +217,49 @@ namespace Project_1.Controllers
             return View(listing);
         }
 
+        // ✅ GET: Edit
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
 
+            var listing = await _listingsService.GetById(id);
+            if (listing == null) return NotFound();
 
-        // POST: Add Bid
+            return View(listing);
+        }
+
+        // ✅ POST: Edit
         [HttpPost]
-        public async Task<ActionResult> AddBid([Bind("Id, Price, ListingId, IdentityUserId")] Bid bid)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Price,ImagePath,IsSold,Category")] Listing listing)
+        {
+            if (id != listing.Id) return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(listing);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!await ListingExists(listing.Id)) return NotFound();
+                    else throw;
+                }
+                return RedirectToAction(nameof(MyListings));
+            }
+            return View(listing);
+        }
+
+        private async Task<bool> ListingExists(int id)
+        {
+            return await _context.Listings.AnyAsync(e => e.Id == id);
+        }
+
+        // ✅ POST: Add Bid
+        [HttpPost]
+        public async Task<IActionResult> AddBid([Bind("Id, Price, ListingId, IdentityUserId")] Bid bid)
         {
             if (ModelState.IsValid)
             {
@@ -244,7 +280,7 @@ namespace Project_1.Controllers
             return RedirectToAction("Details", new { id = bid.ListingId });
         }
 
-        // POST: Close Bidding
+        // ✅ POST: Close Bidding
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CloseBidding(int id)
@@ -280,7 +316,7 @@ namespace Project_1.Controllers
             return RedirectToAction("Details", new { id = listing.Id });
         }
 
-        // POST: Delete Listing (Cancel without selling)
+        // ✅ POST: Delete Listing
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteListing(int id)
@@ -290,8 +326,6 @@ namespace Project_1.Controllers
                 .FirstOrDefaultAsync(l => l.Id == id);
 
             if (listing == null) return NotFound();
-
-            // Only allow deleting if the listing is still open
             if (listing.IsSold) return BadRequest("Cannot delete a closed listing.");
 
             if (listing.Bids != null && listing.Bids.Any())
@@ -305,7 +339,7 @@ namespace Project_1.Controllers
             return RedirectToAction("MyListings");
         }
 
-        // POST: Delete an individual bid (before closing)
+        // ✅ POST: Delete Bid
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteBid(int id)
@@ -315,9 +349,7 @@ namespace Project_1.Controllers
                 .FirstOrDefaultAsync(b => b.Id == id);
 
             if (bid == null) return NotFound();
-
-            if (bid.Listing.IsSold)
-                return BadRequest("Cannot delete a bid for a closed listing.");
+            if (bid.Listing.IsSold) return BadRequest("Cannot delete a bid for a closed listing.");
 
             _context.Bids.Remove(bid);
             await _context.SaveChangesAsync();
@@ -329,9 +361,9 @@ namespace Project_1.Controllers
             return RedirectToAction("MyBids");
         }
 
-        // POST: Add Comment
+        // ✅ POST: Add Comment
         [HttpPost]
-        public async Task<ActionResult> AddComment([Bind("Id, Content, ListingId, IdentityUserId")] Comment comment)
+        public async Task<IActionResult> AddComment([Bind("Id, Content, ListingId, IdentityUserId")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -340,14 +372,6 @@ namespace Project_1.Controllers
 
             var listing = await _listingsService.GetById(comment.ListingId);
             return View("Details", listing);
-        }
-
-        // GET: Won Bids
-        public async Task<IActionResult> WonBids()
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var wonBids = await _bidsService.GetWonBidsAsync(userId);
-            return View(wonBids);
         }
     }
 }

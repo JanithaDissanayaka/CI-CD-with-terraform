@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MHHDX3s2nhY=",
+  "dgSpecHash": "TIQQx3v+AgY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Janitha\\Desktop\\Auction site\\v2\\Project 1\\Project 1.csproj",
+  "projectFilePath": "C:\\Users\\Janitha\\Desktop\\New folder (2)\\Auction-Site\\Project 1\\Project 1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Janitha\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Janitha\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

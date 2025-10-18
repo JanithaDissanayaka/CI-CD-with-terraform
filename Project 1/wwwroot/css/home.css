@@ -55,7 +55,7 @@ body {
 /* --- Hero Section --- */
 .hero-section {
     /* You REALLY need a high-quality image here */
-    background-image: linear-gradient(rgba(26, 58, 90, 0.7), rgba(26, 58, 90, 0.7)), url('/Images/your-hero-background.jpg');
+    background-color: #1a3a5a;
     background-size: cover;
     background-position: center;
     height: 60vh;
@@ -289,23 +289,74 @@ body {
 /* --- Footer Section --- */
 .footer-section {
     background-color: var(--color-primary);
-    color: rgba(255, 255, 255, 0.8);
-    padding: 50px 20px;
-    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 25px 0;
 }
 
-    .footer-section h2 {
-        color: white;
-        font-weight: 600;
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* responsive */
+}
+
+.footer-left a {
+    color: rgba(255, 255, 255, 0.85);
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+    .footer-left a:hover {
+        color: #fff;
+        text-decoration: underline;
     }
 
-    .footer-section p {
-        font-size: 0.9rem;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-        font-weight: 300;
+.footer-right {
+    text-align: right;
+}
+
+    .footer-right h2 {
+        color: #fff;
+        font-weight: 600;
+        margin: 0;
+        font-size: 1.3rem;
     }
+
+    .footer-right p {
+        margin: 3px 0 0;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-right {
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        margin-bottom: 10px;
+    }
+}
+
+
 
 /* --- Listing Page Card Layout --- */
 
@@ -560,3 +611,218 @@ main {
         background-color: #c09e32; /* Darker gold */
         color: #fff;
     }
+
+/* ===== General Page Style ===== */
+.container {
+    max-width: 1200px;
+}
+
+.section-title {
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== Category Cards ===== */
+.category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+    .category-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+        color: var(--color-primary);
+    }
+
+    .category-card h5 {
+        margin-top: 10px;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+.category-icon {
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+/* ===== Listing Cards ===== */
+.listing-card {
+    border: none;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+    .listing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+.listing-card-img-wrapper {
+    overflow: hidden;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.listing-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.listing-card:hover .listing-card-img {
+    transform: scale(1.05);
+}
+
+.listing-card-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.listing-card-title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+    .listing-card-title-link:hover {
+        color: var(--color-primary);
+    }
+
+.listing-card-price {
+    font-size: 1rem;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.listing-card-user {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+/* ===== Timer Styles ===== */
+.auction-timer {
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.timer-closed {
+    color: #999;
+}
+
+/* ===== Buttons ===== */
+.btn-bid-details {
+    background-color: var(--color-primary);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+    .btn-bid-details:hover {
+        background-color: #6b3a25; /* darker shade of your brand color */
+    }
+
+/* ===== Pagination ===== */
+.pagination .page-link {
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+}
+
+.pagination .page-link:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+/* ===== Empty State ===== */
+.alert-info {
+    background-color: rgba(75, 44, 32, 0.1);
+    color: var(--color-primary);
+    border: none;
+    font-weight: 500;
+}
+
+.about-section {
+    background-color: var(--color-bg, #fdfbf7);
+    color: var(--color-text, #4b2c20);
+}
+
+.section-title {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.about-heading {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.about-text {
+    line-height: 1.7;
+    font-size: 0.95rem;
+    color: #5a4637;
+}
+
+.about-card {
+    background-color: var(--color-card-bg, #fff);
+    border-radius: 12px;
+}
+
+.btn-gold {
+    background-color: #b89b5e;
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+    .btn-gold:hover {
+        background-color: #a5894c;
+        transform: translateY(-2px);
+    }
+
+/* --- Navbar Icon Spacing & Alignment Fix --- */
+.navbar .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* space between icon and text */
+    padding: 8px 12px;
+}
+
+    .navbar .nav-link i,
+    .navbar .nav-link svg {
+        font-size: 1.3rem; /* standard icon size */
+        vertical-align: middle;
+
+    }
+
+/* Ensure icons don’t touch each other in navbar menus */
+.navbar .navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 1px; /* space between nav items */
+}
+
+/* If there are buttons or dropdowns with icons */
+.navbar .btn,
+.navbar .dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap:5px;
+}

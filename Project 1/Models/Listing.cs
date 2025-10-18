@@ -43,5 +43,7 @@ namespace Project_1.Models
                 return "Active"; // default
             }
         }
+
+        public int? WinningBidId { get; set; }
     }
 }

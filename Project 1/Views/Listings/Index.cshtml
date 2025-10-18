@@ -1,4 +1,4 @@
-﻿@model PaginatedList<Project_1.Models.Listing>
+﻿@model IEnumerable<Project_1.Models.Listing>
 
 @{
     ViewData["Title"] = "Open Bids";
@@ -6,6 +6,7 @@
 }
 
 <div class="container mt-5">
+    
     <h2 class="section-title text-center">
         @if (!String.IsNullOrEmpty(ViewData["CurrentCategory"] as string))
         {
@@ -16,6 +17,7 @@
             <span>@ViewData["Title"]</span>
         }
     </h2>
+    
 
     <section class="section container text-center pt-4 pb-4">
         <h4 class="section-title" style="font-size: 1.5rem;">Browse by Category</h4>
@@ -46,6 +48,7 @@
             </div>
         </div>
     </section>
+
     @if (!Model.Any())
     {
         <div class="alert alert-info text-center mt-4">
@@ -100,38 +103,6 @@
         </div>
     }
 
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center mt-5">
-            @{
-                var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-                var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-            }
-
-            <li class="page-item @prevDisabled">
-                <a asp-action="Index"
-                   asp-route-pageNumber="@(Model.PageIndex - 1)"
-                   asp-route-category="@ViewData["CurrentCategory"]"
-                   class="page-link">Previous</a>
-            </li>
-
-            @for (int i = 1; i <= Model.TotalPages; i++)
-            {
-                <li class="page-item @(i == Model.PageIndex ? "active" : "")">
-                    <a asp-action="Index"
-                       asp-route-pageNumber="@i"
-                       asp-route-category="@ViewData["CurrentCategory"]"
-                       class="page-link">@i</a>
-                </li>
-            }
-
-            <li class="page-item @nextDisabled">
-                <a asp-action="Index"
-                   asp-route-pageNumber="@(Model.PageIndex + 1)"
-                   asp-route-category="@ViewData["CurrentCategory"]"
-                   class="page-link">Next</a>
-            </li>
-        </ul>
-    </nav>
 </div>
 
 @section Scripts {

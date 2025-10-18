@@ -7,52 +7,84 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="mt-4 mb-3 text-center">Manage Users</h2>
+<div class="container my-5">
+    <h2 class="text-center mb-4" style="color: #4b2c20; font-weight: 600;">Manage Users</h2>
 
-<table class="table table-striped table-bordered">
-    <thead class="table-dark">
-        <tr>
-            <th>UserName</th>
-            <th>Email</th>
-            <th>Roles</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in Model)
-        {
-            var roles = await UserManager.GetRolesAsync(user);
-            var isActive = user.LockoutEnd == null || user.LockoutEnd <= DateTimeOffset.Now;
-            <tr>
-                <td>@user.UserName</td>
-                <td>@user.Email</td>
-                <td>@string.Join(", ", roles)</td>
-                <td>@(isActive ? "Active" : "Inactive")</td>
-                <td>
-                    @* Activate / Deactivate *@
-                    @if (isActive)
-                    {
-                        <form asp-action="Deactivate" method="post" style="display:inline">
-                            <input type="hidden" name="userId" value="@user.Id" />
-                            <button type="submit" class="btn btn-sm btn-warning">Deactivate</button>
-                        </form>
-                    }
-                    else
-                    {
-                        <form asp-action="Activate" method="post" style="display:inline">
-                            <input type="hidden" name="userId" value="@user.Id" />
-                            <button type="submit" class="btn btn-sm btn-success">Activate</button>
-                        </form>
-                    }
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            No users found.
+        </div>
+    }
+    else
+    {
+        <table class="table table-striped table-hover align-middle shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    var roles = await UserManager.GetRolesAsync(user);
+                    var isActive = user.LockoutEnd == null || user.LockoutEnd <= DateTimeOffset.Now;
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@user.Email</td>
+                        <td>@string.Join(", ", roles)</td>
+                        <td>
+                            <span class="badge @(isActive ? "bg-success" : "bg-secondary")">
+                                @(isActive ? "Active" : "Inactive")
+                            </span>
+                        </td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                @if (isActive)
+                                {
+                                    <form asp-action="Deactivate" method="post">
+                                        <input type="hidden" name="userId" value="@user.Id" />
+                                        <button type="submit" class="btn btn-sm btn-warning">Deactivate</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-action="Activate" method="post">
+                                        <input type="hidden" name="userId" value="@user.Id" />
+                                        <button type="submit" class="btn btn-sm btn-success">Activate</button>
+                                    </form>
+                                }
 
-                    @* Delete user *@
-                    <form asp-action="DeleteUser" method="post" style="display:inline" );">
-                        <input type="hidden" name="userId" value="@user.Id" />
-                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                                <form asp-action="DeleteUser" method="post">
+                                    <input type="hidden" name="userId" value="@user.Id" />
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <a href="@Url.Action("Dashboard", "Admin")"  style="padding-left:550px;"><i class="bi bi-house-door category-icon"></i></a>
+            
+    }
+</div>
+
+<style>
+    table.table-hover tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+</style>

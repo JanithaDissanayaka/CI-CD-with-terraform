@@ -91,5 +91,12 @@ namespace Project_1.Controllers
             var payments = _context.Payments.ToList();
             return View(payments);
         }
+
+        public IActionResult EditListing(int id)
+        {
+            // Redirect to ListingsController's Edit action
+            return RedirectToAction("Edit", "Listings", new { id });
+        }
+
     }
 }
