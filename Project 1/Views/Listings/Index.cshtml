@@ -1,0 +1,152 @@
+﻿@model IEnumerable<Project_1.Models.Listing>
+
+@{
+    ViewData["Title"] = "Open Bids";
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+    
+    <h2 class="section-title text-center">
+        @if (!String.IsNullOrEmpty(ViewData["CurrentCategory"] as string))
+        {
+            <span>Browsing: @ViewData["CurrentCategory"]</span>
+        }
+        else
+        {
+            <span>@ViewData["Title"]</span>
+        }
+    </h2>
+    
+
+    <section class="section container text-center pt-4 pb-4">
+        <h4 class="section-title" style="font-size: 1.5rem;">Browse by Category</h4>
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <a asp-controller="Listings" asp-action="Index" asp-route-category="Furniture" class="category-card">
+                    <i class="bi bi-lamp-fill category-icon"></i>
+                    <h5>Furniture</h5>
+                </a>
+            </div>
+            <div class="col-md-3 col-6">
+                <a asp-controller="Listings" asp-action="Index" asp-route-category="Art" class="category-card">
+                    <i class="bi bi-palette-fill category-icon"></i>
+                    <h5>Art & Paintings</h5>
+                </a>
+            </div>
+            <div class="col-md-3 col-6">
+                <a asp-controller="Listings" asp-action="Index" asp-route-category="Jewelry" class="category-card">
+                    <i class="bi bi-gem category-icon"></i>
+                    <h5>Jewelry</h5>
+                </a>
+            </div>
+            <div class="col-md-3 col-6">
+                <a asp-controller="Listings" asp-action="Index" asp-route-category="Collectibles" class="category-card">
+                    <i class="bi bi-book-half category-icon"></i>
+                    <h5>Collectibles</h5>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center mt-4">
+            There are no active auctions in this category.
+        </div>
+    }
+    else
+    {
+        <div class="listing-container mt-4">
+            <div class="row">
+                @foreach (var listing in Model)
+                {
+                    <div class="col-lg-3 col-md-6 col-12 mb-4 d-flex">
+                        <div class="listing-card card flex-fill">
+                            <div class="listing-card-img-wrapper">
+                                <img src="~/Images/@listing.ImagePath" class="listing-card-img" />
+                            </div>
+                            <div class="listing-card-body card-body d-flex flex-column">
+                                <h5 class="listing-card-title">
+                                    <a asp-action="Details" asp-route-id="@listing.Id" class="listing-card-title-link">
+                                        @listing.Title
+                                    </a>
+                                </h5>
+                                <p class="listing-card-price">
+                                    Current Bid: <strong>Rs @listing.Price.ToString("N2")</strong>
+                                </p>
+                                <p class="listing-card-user">
+                                    <small class="text-muted">Listed by: @listing.User.Email</small>
+                                </p>
+                                <div class="listing-card-timer">
+                                    <strong>Time Remaining:</strong>
+                                    <span class="auction-timer @(listing.IsSold ? "timer-closed" : "timer-active")"
+                                          data-closing-time="@listing.ClosingTime.ToString("o")">
+                                        @(listing.IsSold ? "Bidding Closed" : "Calculating...")
+                                    </span>
+                                </div>
+                                <div class="listing-card-action mt-auto pt-3">
+                                    @if (!listing.IsSold)
+                                    {
+                                        <a asp-action="Details" asp-route-id="@listing.Id" class="btn btn-primary btn-bid-details w-100">View Details & Bid</a>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-secondary w-100" disabled>Bidding Closed</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const timers = document.querySelectorAll(".auction-timer:not(.timer-closed)");
+            if (timers.length === 0) return;
+
+            function updateAllTimers() {
+                const now = new Date();
+                timers.forEach(timer => {
+                    if (timer.classList.contains('timer-closed-dynamic')) {
+                        return;
+                    }
+                    const closingTime = new Date(timer.dataset.closingTime);
+                    const diff = closingTime - now;
+                    if (diff <= 0) {
+                        timer.textContent = "Bidding Closed";
+                        timer.classList.remove("timer-active");
+                        timer.classList.add("timer-closed", "timer-closed-dynamic");
+                        const card = timer.closest('.listing-card');
+                        if (card) {
+                            const button = card.querySelector('.btn-bid-details');
+                            if (button) {
+                                button.textContent = "Bidding Closed";
+                                button.classList.remove("btn-primary");
+                                button.classList.add("btn-secondary", "disabled");
+                            }
+                        }
+                    } else {
+                        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                        const seconds = Math.floor((diff / 1000) % 60);
+                        if (days > 0) {
+                            timer.textContent = `${days}d ${hours}h ${minutes}m`;
+                        } else {
+                            timer.textContent = `${hours}h ${minutes}m ${seconds}s`;
+                        }
+                    }
+                });
+            }
+            updateAllTimers();
+            setInterval(updateAllTimers, 1000);
+        });
+    </script>
+}
