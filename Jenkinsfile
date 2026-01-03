@@ -1,25 +1,32 @@
 pipeline {
     agent any
-    
-    tools {
-        dotnetsdk 'dotnet-8'
+    options {
+        skipStagesAfterUnstable()
     }
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Build Stage"'
                 sh 'dotnet restore'
                 sh 'dotnet build --no-restore'
             }
         }
-        stage('Test') { 
+        stage('Test') {
             steps {
-                sh 'echo "Test Stage"'
-                sh 'dotnet test --no-build --no-restore --collect "XPlat Code Coverage"' 
+                sh 'dotnet test --no-build --no-restore --collect "XPlat Code Coverage"'
             }
             post {
                 always {
-                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/*.xml']], sourceDirectories: [[path: 'SimpleWebApi.Test/TestResults']])  
+                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/*.xml']], sourceDirectories: [[path: 'SimpleWebApi.Test/TestResults']])
+                }
+            }
+        }
+        stage('Deliver') { 
+            steps {
+                sh 'dotnet publish SimpleWebApi --no-restore -o published'  
+            }
+            post {
+                success {
+                    archiveArtifacts 'published/*.*' 
                 }
             }
         }
