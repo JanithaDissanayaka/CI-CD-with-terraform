@@ -1,29 +1,34 @@
 pipeline {
     agent any
+    
+    tools{
+        docker {
+            image 'mcr.microsoft.com/dotnet/sdk:8.0'
+            args '-u root'
+        }
+    }
 
     options {
         skipStagesAfterUnstable()
     }
 
     stages {
-
-        stage('Build & Test (.NET)') {
-            agent {
-                docker {
-                    image 'mcr.microsoft.com/dotnet/sdk:8.0'
-                    reuseNode true
-                }
-            }
+        stage('Build') {
             steps {
                 sh 'dotnet --version'
                 sh 'dotnet restore'
                 sh 'dotnet build --no-restore'
+            }
+        }
+
+        stage('Test') {
+            steps {
                 sh 'dotnet test --no-build --no-restore --collect "XPlat Code Coverage"'
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
+        stage('build image'){
+            steps{
                 sh 'docker build -t auctionsite .'
             }
         }
