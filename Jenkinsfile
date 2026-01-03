@@ -27,7 +27,7 @@ pipeline {
 
         stage{
             steps{
-                sh 'deocker build -t auctionsite .
+                sh 'deocker build -t auctionsite .'
             }
         }
 
