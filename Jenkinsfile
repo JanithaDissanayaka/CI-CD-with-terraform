@@ -1,10 +1,13 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'mcr.microsoft.com/dotnet/sdk:8.0'
+        }
+    }
 
     stages {
         stage('Build') {
             steps {
-                sh 'dotnet --version'
                 sh 'dotnet restore'
                 sh 'dotnet build --no-restore'
             }
@@ -12,24 +15,13 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'dotnet test --no-build --no-restore --collect "XPlat Code Coverage"'
-            }
-        }
-
-        stage('build image'){
-            steps{
-                sh 'docker build -t auctionsite .'
+                sh 'dotnet test --no-build --no-restore'
             }
         }
 
         stage('Deliver') {
             steps {
-                sh 'dotnet publish SimpleWebApi --no-restore -o published'
-            }
-            post {
-                success {
-                    archiveArtifacts artifacts: 'published/**'
-                }
+                sh 'dotnet publish "Project 1/Project 1.csproj" -c Release -o published'
             }
         }
     }
