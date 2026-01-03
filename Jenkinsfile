@@ -27,7 +27,7 @@ pipeline {
 
         stage('build image'){
             steps{
-                sh 'deocker build -t auctionsite .'
+                sh 'docker build -t auctionsite .'
             }
         }
 
