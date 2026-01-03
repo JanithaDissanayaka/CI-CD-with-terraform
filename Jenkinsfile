@@ -1,7 +1,5 @@
 pipeline {
-    agent any
-    
-    tools{
+    agent any{
         docker {
             image 'mcr.microsoft.com/dotnet/sdk:8.0'
             args '-u root'
