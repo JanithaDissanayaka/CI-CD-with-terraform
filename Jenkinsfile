@@ -25,7 +25,7 @@ pipeline {
             }
         }
 
-        stage{
+        stage('build image'){
             steps{
                 sh 'deocker build -t auctionsite .'
             }
