@@ -1,14 +1,5 @@
 pipeline {
-    agent any{
-        docker {
-            image 'mcr.microsoft.com/dotnet/sdk:8.0'
-            args '-u root'
-        }
-    }
-
-    options {
-        skipStagesAfterUnstable()
-    }
+    agent any
 
     stages {
         stage('Build') {
