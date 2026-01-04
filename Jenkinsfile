@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'mcr.microsoft.com/dotnet/sdk:8.0'
-            args '-u root'
+            args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
 
@@ -39,8 +39,7 @@ pipeline {
 
         stage('Image'){
             steps{
-                sh 'curl -fsSL https://get.docker.com -o get-docker.sh'
-                sh 'sudo ./get-docker.sh --dry-run'
+                sh 'docker version'
                 sh 'docker build -t auction .'
             }
         }
