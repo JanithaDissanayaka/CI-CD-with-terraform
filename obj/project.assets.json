@@ -13789,11 +13789,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Janitha\\Desktop\\Project 1\\Auction-Site\\Project 1.csproj",
+      "projectUniqueName": "C:\\Users\\Janitha\\Desktop\\Project 1\\auctionsite\\Project 1.csproj",
       "projectName": "Project 1",
-      "projectPath": "C:\\Users\\Janitha\\Desktop\\Project 1\\Auction-Site\\Project 1.csproj",
+      "projectPath": "C:\\Users\\Janitha\\Desktop\\Project 1\\auctionsite\\Project 1.csproj",
       "packagesPath": "C:\\Users\\Janitha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Janitha\\Desktop\\Project 1\\Auction-Site\\obj\\",
+      "outputPath": "C:\\Users\\Janitha\\Desktop\\Project 1\\auctionsite\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Janitha\\AppData\\Roaming\\NuGet\\NuGet.Config"
