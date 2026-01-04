@@ -27,6 +27,7 @@ pipeline {
 
         stage('Deliver') {
             steps {
+                sh 'rm -rf published'
                 sh 'dotnet publish "Project 1.csproj" --no-restore -o published'
             }
             post {
