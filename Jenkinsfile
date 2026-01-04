@@ -38,7 +38,7 @@ pipeline {
 
         stage('Image'){
             steps{
-                sh docker build -t auction .
+                sh 'docker build -t auction .'
             }
         }
     }
