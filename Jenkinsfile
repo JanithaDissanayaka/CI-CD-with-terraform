@@ -40,7 +40,7 @@ pipeline {
         stage('Image'){
             steps{
                 sh 'curl -fsSL https://get.docker.com -o get-docker.sh'
-                sh './get-docker.sh --dry-run'
+                sh 'sudo ./get-docker.sh --dry-run'
                 sh 'docker build -t auction .'
             }
         }
