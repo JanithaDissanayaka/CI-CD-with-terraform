@@ -8,10 +8,10 @@ variable env_prefix {
     default = "dev"
 }
 variable my_ip {
-    default = "192.168.8.140/32"
+    default = "ip_address"
 }
 variable "jenkins_ip" {
-    default = "111.223.177.181/32"
+    default = "jenkins_ip"
   
 }
 variable "instance_type" {
