@@ -3,7 +3,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
       ACCEPT_EULA: "Y"
-      MSSQL_SA_PASSWORD: "StrongPass@123"
+      MSSQL_SA_PASSWORD: "password"
     ports:
       - "1433:1433"
     volumes:
@@ -21,7 +21,7 @@ services:
         Server=db;
         Database=AuctionDb;
         User Id=sa;
-        Password=StrongPass@123;
+        Password=password;
         TrustServerCertificate=True
 
 volumes:
