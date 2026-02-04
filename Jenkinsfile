@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        IMAGE = 'janithadissanayaka/learn:auctionsite'
+        IMAGE = 'your-dockerhub-username/repo:auctionsite'
     }
 
     stages {
